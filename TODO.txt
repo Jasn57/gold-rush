@@ -1,0 +1,15 @@
+Mine coal and ores
+
+Smelt ores using coal as fuel
+
+Sell bars for money
+
+Use money to buy better pickaxes
+
+Hire miners to automate mining
+
+Upgrade furnaces for faster smelting
+
+Expand storage for more resources
+
+Prestige to reset for permanent bonuses
