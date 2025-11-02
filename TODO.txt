@@ -10,6 +10,6 @@ Hire miners to automate mining
 
 Upgrade furnaces for faster smelting
 
-Expand storage for more resources
+local storage 
 
 Prestige to reset for permanent bonuses
