@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gold Rush</title>
+  <link rel="stylesheet" href="src/css/style.css" />
+</head>
+<body>
+  <section id="mine">
+    <input id="gold_mine_button" type="image" src="assets/gold_ore.png" alt="Click me" width="150" height="150">
+    <input id="coal_mine_button" type="image" src="#" alt="Click me" width="150" height="150">
+  </section>  
+    <section id="shop">
+    <button id="wood_pick_upgrade" type="button">Buy Wood Pickaxe</button>
+    <button id="stone_pick_upgrade" type="button">Buy Stone Pickaxe</button>
+    <button id="copper_pick_upgrade" type="button">Buy Copper Pickaxe</button>
+    <button id="iron_pick_upgrade" type="button">Buy Iron Pickaxe</button>
+  </section>
+  <section id="furnace">
+    <button id="smelt_button" type="button">Smelt</button>
+  </section>
+  <section id="stats">    
+    <div id="gold_count_output"></div>
+    <div id="coal_count_output"></div>
+    <div id="cash_count_output"></div>
+  </section>
+  <script src="src/js/main.js"></script>  
+  <script src="src/js/upgrades.js"></script>
+  <script src="src/js/mining.js"></script>
+  <script src="src/js/smelting.js"></script>
+  <script src="src/js/state.js"></script>
+</body>
+</html>
