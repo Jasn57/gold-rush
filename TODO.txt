@@ -13,3 +13,5 @@ Upgrade furnaces for faster smelting
 local storage 
 
 Prestige to reset for permanent bonuses
+
+durability for picks
