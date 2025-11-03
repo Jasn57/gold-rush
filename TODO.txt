@@ -1,16 +1,14 @@
-Mine coal and ores
+Mine coal and ores ✅
 
-Smelt ores using coal as fuel
+Smelt ores using coal as fuel ✅
 
-Sell bars for money
+Sell bars for money ✅
 
-Use money to buy better pickaxes
+Use money to buy better pickaxes ✅
 
 Hire miners to automate mining
 
-Upgrade furnaces for faster smelting
-
-local storage 
+local storage ✅
 
 Prestige to reset for permanent bonuses
 
