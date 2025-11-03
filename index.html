@@ -8,16 +8,18 @@
 </head>
 <body>
   <section id="stats">    
-    <div id="gold_ore_count_output"></div>
-    <div id="coal_count_output"></div>
-    <div id="cash_count_output"></div>
-    <div id="gold_bar_count_output"></div>
+    <div id="gold_ore_count_output">You have: 0 Gold Ore</div>
+    <div id="coal_count_output">You have: 0 Coal</div>
+    <div id="cash_count_output">You have: 0 Dollars</div>
+    <div id="gold_bar_count_output">You have: 0 Gold Bars</div>
   </section>
+
   <section id="mine">
-    <input id="gold_mine_button" type="image" src="assets/gold_ore.png" alt="Click me" width="150" height="150">
-    <input id="coal_mine_button" type="image" src="#" alt="Click me" width="150" height="150">
+    <input id="gold_mine_button" type="image" src="assets/gold_ore.png" alt="Mine Gold" width="150" height="150">
+    <input id="coal_mine_button" type="image" src="assets/#" alt="Mine Coal" width="150" height="150">
   </section>  
-    <section id="shop">
+
+  <section id="shop">
     <button id="wood_pick_upgrade" type="button">Buy Wood Pickaxe</button>
     <button id="stone_pick_upgrade" type="button">Buy Stone Pickaxe</button>
     <button id="copper_pick_upgrade" type="button">Buy Copper Pickaxe</button>
@@ -26,17 +28,15 @@
     <button id="emerald_pick_upgrade" type="button">Buy Emerald Pickaxe</button>
     <button id="diamond_pick_upgrade" type="button">Buy Diamond Pickaxe</button>
   </section>
+
   <section id="furnace">
     <button id="smelt_button" type="button">Smelt</button>
   </section>
+
   <section id="sell">
-    <button id="sell_button" type="button"></button>
+    <button id="sell_button" type="button">Sell Gold Bars</button>
   </section>
+
   <script src="src/js/main.js"></script>  
-  <script src="src/js/upgrades.js"></script>
-  <script src="src/js/mining.js"></script>
-  <script src="src/js/smelting.js"></script>
-  <script src="src/js/state.js"></script>
-  <script src="src/js/sell.js"></script>
 </body>
 </html>
