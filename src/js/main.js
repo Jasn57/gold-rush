@@ -14,7 +14,7 @@ let gold_ore_count = 0;
 let coal_count = 0;
 let cash_count = 0;
 let gold_bar_count = 0;
-let multiplier = 1;
+let multiplier = 0;
 
 let wood_pick_status = 'not_purchased';
 let stone_pick_status = 'not_purchased';
@@ -29,7 +29,7 @@ gold_ore_count = parseInt(localStorage.getItem("gold_ore_count")) || 0;
 coal_count = parseInt(localStorage.getItem("coal_count")) || 0;
 cash_count = parseInt(localStorage.getItem("cash_count")) || 0;
 gold_bar_count = parseInt(localStorage.getItem("gold_bar_count")) || 0;
-multiplier = parseInt(localStorage.getItem("multiplier")) || 1;
+multiplier = parseInt(localStorage.getItem("multiplier")) || 0;
 
 wood_pick_status = localStorage.getItem("wood_pick_status") || "not_purchased";
 stone_pick_status = localStorage.getItem("stone_pick_status") || "not_purchased";
