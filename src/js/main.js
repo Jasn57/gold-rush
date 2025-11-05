@@ -98,9 +98,6 @@ wood_pick_upgrade.addEventListener('click', () => {
         wood_pick_status = 'purchased';
         document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
     }
-    if (wood_pick_status = 'purchased') {
-        document.getElementById("equiped_pick").innerHTML = `<p> You have the Wood Pickaxe equiped.`
-    }
 });
 
 stone_pick_upgrade.addEventListener('click', () => {
@@ -108,9 +105,7 @@ stone_pick_upgrade.addEventListener('click', () => {
         cash_count -= 500;
         multiplier += 2;
         stone_pick_status = 'purchased';
-    }
-    if (stone_pick_status = 'purchased') {
-        document.getElementById("equiped_pick").innerHTML = `<p> You have the Stone Pickaxe equiped.`
+        document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
@@ -121,9 +116,6 @@ copper_pick_upgrade.addEventListener('click', () => {
         copper_pick_status = 'purchased';
         document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
     }
-    if (copper_pick_status = 'purchased') {
-        document.getElementById("equiped_pick").innerHTML = `<p> You have the copper Pickaxe equiped.`
-    }
 });
 
 iron_pick_upgrade.addEventListener('click', () => {
@@ -132,9 +124,6 @@ iron_pick_upgrade.addEventListener('click', () => {
         multiplier += 4;
         iron_pick_status = 'purchased';
         document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
-    }
-    if (iron_pick_status = 'purchased') {
-        document.getElementById("equiped_pick").innerHTML = `<p> You have the Iron Pickaxe equiped.`
     }
 });
 
@@ -145,9 +134,6 @@ gold_pick_upgrade.addEventListener('click', () => {
         gold_pick_status = 'purchased';
         document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
     }
-    if (gold_pick_status = 'purchased') {
-        document.getElementById("equiped_pick").innerHTML = `<p> You have the Gold Pickaxe equiped.`
-    }
 });
 
 emerald_pick_upgrade.addEventListener('click', () => {
@@ -157,9 +143,6 @@ emerald_pick_upgrade.addEventListener('click', () => {
         emerald_pick_status = 'purchased';
         document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
     }
-    if (emerald_pick_status = 'purchased') {
-        document.getElementById("equiped_pick").innerHTML = `<p> You have the Emerald Pickaxe equiped.`
-    }
 });
 
 diamond_pick_upgrade.addEventListener('click', () => {
@@ -168,9 +151,6 @@ diamond_pick_upgrade.addEventListener('click', () => {
         multiplier += 10;
         diamond_pick_status = 'purchased';
         document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
-    }
-    if (diamond_pick_status = 'purchased') {
-        document.getElementById("equiped_pick").innerHTML = `<p> You have the Diamond Pickaxe equiped.`
     }
 });
 
