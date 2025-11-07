@@ -9,6 +9,7 @@ const iron_pick_upgrade = document.getElementById('iron_pick_upgrade');
 const gold_pick_upgrade = document.getElementById('gold_pick_upgrade');
 const emerald_pick_upgrade = document.getElementById('emerald_pick_upgrade');
 const diamond_pick_upgrade = document.getElementById('diamond_pick_upgrade');
+const basic_worker_hire = document.getElementById('basic_worker_hire');
 
 let gold_ore_count = 0;
 let coal_count = 0;
@@ -23,6 +24,8 @@ let iron_pick_status = 'not_purchased';
 let gold_pick_status = 'not_purchased';
 let emerald_pick_status = 'not_purchased';
 let diamond_pick_status = 'not_purchased';
+
+let basic_worker_count = '0';
 
 // load from local storage
 gold_ore_count = parseInt(localStorage.getItem("gold_ore_count")) || 0;
@@ -39,6 +42,8 @@ gold_pick_status = localStorage.getItem("gold_pick_status") || "not_purchased";
 emerald_pick_status = localStorage.getItem("emerald_pick_status") || "not_purchased";
 diamond_pick_status = localStorage.getItem("diamond_pick_status") || "not_purchased";
 
+basic_worker_count = localStorage.getItem("basic_worker_count") || "0";
+
 // save progress to local storage
 function saveGame() {
   localStorage.setItem("gold_ore_count", gold_ore_count);
@@ -54,6 +59,14 @@ function saveGame() {
   localStorage.setItem("gold_pick_status", gold_pick_status);
   localStorage.setItem("emerald_pick_status", emerald_pick_status);
   localStorage.setItem("diamond_pick_status", diamond_pick_status);
+
+  localStorage.setItem("basic_worker_count", basic_worker_count);
+}
+
+// function for basic miner
+function basicMine() {
+    gold_ore_count += 1;
+    coal_count += 1;
 }
 
 // mine gold
@@ -153,6 +166,16 @@ diamond_pick_upgrade.addEventListener('click', () => {
         document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
+
+// hire workers
+basic_worker_hire.addEventListener('click', async () => {
+    basic_worker_count += 1
+});
+
+// workers mining 
+if (basic_worker_count >= 1) {
+    setInterval(basicMine, 10000)
+};
 
 // save to local storage every 5 seconds
 setInterval(saveGame, 5000);
