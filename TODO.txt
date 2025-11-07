@@ -48,6 +48,8 @@ Repair system for worn-out tools (uses money or materials)
 
 Power plant upgrade to reduce smelting costs
 
+1 upgrade button for picks rather than multiple buttons 
+
 # Extras & Replayability
 
 Achievements and milestones
