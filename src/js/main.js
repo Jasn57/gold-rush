@@ -42,7 +42,7 @@ gold_pick_status = localStorage.getItem("gold_pick_status") || "not_purchased";
 emerald_pick_status = localStorage.getItem("emerald_pick_status") || "not_purchased";
 diamond_pick_status = localStorage.getItem("diamond_pick_status") || "not_purchased";
 
-basic_worker_count = localStorage.getItem("basic_worker_count") || "0";
+basic_worker_count = localStorage.getItem("basic_worker_count") || 0;
 
 // save progress to local storage
 function saveGame() {
