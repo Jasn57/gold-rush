@@ -25,7 +25,7 @@ let gold_pick_status = 'not_purchased';
 let emerald_pick_status = 'not_purchased';
 let diamond_pick_status = 'not_purchased';
 
-let basic_worker_count = '0';
+let basic_worker_count = 0;
 
 // load from local storage
 gold_ore_count = parseInt(localStorage.getItem("gold_ore_count")) || 0;
