@@ -119,22 +119,22 @@ sell_button.addEventListener('click', () => {
 });
 
 // storage limits
-if (gold_ore_count > 10000) {
+if (gold_ore_count > 10000) { // 10k
   gold_ore_count = 10000;
   document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for gold ore</p>`;
 }
 
-if (gold_bar_count > 10000) {
+if (gold_bar_count > 10000) { // 10k
   gold_bar_count = 10000;
   document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for gold bars</p>`;
 }
 
-if (coal_count > 10000) {
+if (coal_count > 10000) { // 10k
   coal_count = 10000;
   document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for coal</p>`;
 }
 
-if (cash_count > 10000) {
+if (cash_count > 10000000) { // 1m
   cash_count = 10000;
   document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for cash</p>`;
 }
