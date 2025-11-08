@@ -8,11 +8,12 @@ Sell bars for money ✅
 
 Use money to buy better pickaxes ✅
 
-Durability for picks
+Durability for picks ✅
 
-Hire miners to automate mining
+Hire miners to automate mining ✅
 
-Prestige to reset for permanent bonuses
+Prestige to reset for permanent bonuses ✅
+
 
 # Economy & Progression
 
@@ -22,13 +23,12 @@ Random trader who offers better deals occasionally
 
 Smelting efficiency upgrades (use less coal or faster smelt time)
 
-Mining power upgrades (mine more ore per click)
+Storage limits ✅
 
-Storage limits with purchasable expansions
-
-Bank interest or investments to earn passive income
+expansions for storage
 
 Crafting system (make jewelry or refined products for higher profits)
+
 
 # Resources & Items
 
@@ -38,17 +38,17 @@ Add rare gems that boost multipliers or unlock special upgrades
 
 Fuel alternatives later in game (like oil or magic fuel)
 
+
 # Upgrades & Automation
 
 Miner automation tiers (apprentice → foreman → industrial drill)
 
 Smelter automation (auto-process ores using stored fuel)
 
-Repair system for worn-out tools (uses money or materials)
-
 Power plant upgrade to reduce smelting costs
 
 1 upgrade button for picks rather than multiple buttons 
+
 
 # Extras & Replayability
 
@@ -58,24 +58,10 @@ Random events (e.g., “Gold Rush” for double income for 30 seconds)
 
 Mining levels or XP system
 
-Leaderboard (local high scores)
-
-Challenges or timed goals
-
-Offline progress (earn resources while away)
-
 # UI & Quality of Life
 
 Local storage ✅
 
-Manual save/load and reset options
-
-Progress bars for mining/smelting
-
 Tooltip info for upgrades and prices
 
-Dark mode and color themes
-
 Sound effects and background music
-
-Simple story or lore progression (“from miner to tycoon”)
