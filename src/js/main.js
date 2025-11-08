@@ -2,6 +2,9 @@ const gold_mine_button = document.getElementById('gold_mine_button');
 const coal_mine_button = document.getElementById('coal_mine_button');
 const smelt_button = document.getElementById('smelt_button');
 const sell_button = document.getElementById('sell_button');
+const basic_worker_hire = document.getElementById('hire_miner');
+const prestige_up = document.getElementById('prestige_up');
+
 const wood_pick_upgrade = document.getElementById('wood_pick_upgrade');
 const stone_pick_upgrade = document.getElementById('stone_pick_upgrade');
 const copper_pick_upgrade = document.getElementById('copper_pick_upgrade');
@@ -9,7 +12,6 @@ const iron_pick_upgrade = document.getElementById('iron_pick_upgrade');
 const gold_pick_upgrade = document.getElementById('gold_pick_upgrade');
 const emerald_pick_upgrade = document.getElementById('emerald_pick_upgrade');
 const diamond_pick_upgrade = document.getElementById('diamond_pick_upgrade');
-const basic_worker_hire = document.getElementById('hire_miner');
 
 let gold_ore_count = 0;
 let coal_count = 0;
@@ -17,6 +19,7 @@ let cash_count = 0;
 let gold_bar_count = 0;
 let multiplier = 0;
 let pick_durability = Infinity;
+let prestige = 0;
 
 let wood_pick_status = 'not_purchased';
 let stone_pick_status = 'not_purchased';
@@ -35,6 +38,7 @@ cash_count = parseInt(localStorage.getItem("cash_count")) || 0;
 gold_bar_count = parseInt(localStorage.getItem("gold_bar_count")) || 0;
 multiplier = parseInt(localStorage.getItem("multiplier")) || 0;
 pick_durability = parseInt(localStorage.getItem("pick_durability")) || Infinity;
+prestige = parseInt(localStorage.getItem("prestige")) || 0;
 
 wood_pick_status = localStorage.getItem("wood_pick_status") || "not_purchased";
 stone_pick_status = localStorage.getItem("stone_pick_status") || "not_purchased";
@@ -54,6 +58,7 @@ function saveGame() {
   localStorage.setItem("gold_bar_count", gold_bar_count);
   localStorage.setItem("multiplier", multiplier);
   localStorage.setItem("pick_durability", pick_durability);
+  localStorage.setItem("prestige", prestige);
 
   localStorage.setItem("wood_pick_status", wood_pick_status);
   localStorage.setItem("stone_pick_status", stone_pick_status);
@@ -111,6 +116,29 @@ sell_button.addEventListener('click', () => {
         document.getElementById("gold_bar_count_output").innerHTML = `<p>You have: ${gold_bar_count} Gold Bars</p>`;
         document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
     }
+});
+
+// prestige
+prestige_up.addEventListener('click', async () => {
+    prestige += 2;
+
+    gold_ore_count = 0;
+    coal_count = 0; 
+    cash_count = 0;
+    gold_bar_count = 0;
+    multiplier = 0;
+    pick_durability = Infinity;
+
+    wood_pick_status = 'not_purchased';
+    stone_pick_status = 'not_purchased';
+    copper_pick_status = 'not_purchased';
+    iron_pick_status = 'not_purchased';
+    gold_pick_status = 'not_purchased';
+    emerald_pick_status = 'not_purchased';
+    diamond_pick_status = 'not_purchased';
+
+    miner_count = 0;
+
 });
 
 // upgrades
@@ -191,7 +219,7 @@ miner_hire.addEventListener('click', async () => {
 
 // workers mining 
 if (basic_worker_count >= 1) {
-    setInterval(Miner, 10000)
+    setInterval(Miner, 10000) // 10 second interval
 };
 
 // save to local storage every 5 seconds
