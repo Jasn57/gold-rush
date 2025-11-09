@@ -41,7 +41,7 @@ Fuel alternatives later in game (like oil or magic fuel)
 
 # Upgrades & Automation
 
-Miner automation tiers (apprentice → foreman → industrial drill)
+Miner automation tiers (apprentice → foreman → industrial drill) ✅
 
 Smelter automation (auto-process ores using stored fuel)
 

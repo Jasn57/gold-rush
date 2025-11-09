@@ -2,7 +2,8 @@ const gold_mine_button = document.getElementById('gold_mine_button');
 const coal_mine_button = document.getElementById('coal_mine_button');
 const smelt_button = document.getElementById('smelt_button');
 const sell_button = document.getElementById('sell_button');
-const basic_worker_hire = document.getElementById('hire_miner');
+const miner_hire = document.getElementById('miner_hire');
+const drill_hire = document.getElementById('drill_hire');
 const prestige_up = document.getElementById('prestige_up');
 
 const wood_pick_upgrade = document.getElementById('wood_pick_upgrade');
@@ -30,6 +31,7 @@ let emerald_pick_status = 'not_purchased';
 let diamond_pick_status = 'not_purchased';
 
 let miner_count = 0;
+let drill_count = 0;
 
 // load from local storage
 gold_ore_count = parseInt(localStorage.getItem("gold_ore_count")) || 0;
@@ -49,6 +51,7 @@ emerald_pick_status = localStorage.getItem("emerald_pick_status") || "not_purcha
 diamond_pick_status = localStorage.getItem("diamond_pick_status") || "not_purchased";
 
 miner_count = localStorage.getItem("miner_count") || 0;
+drill_count = localStorage.getItem("drill_count") || 0;
 
 // save progress to local storage
 function saveGame() {
@@ -69,12 +72,18 @@ function saveGame() {
   localStorage.setItem("diamond_pick_status", diamond_pick_status);
 
   localStorage.setItem("miner_count", miner_count);
+  localStorage.setItem("drill_count", drill_count);
 }
 
 // function for basic miner
 function Miner() {
-    gold_ore_count += 1;
-    coal_count += 1;
+    gold_ore_count += 1 * miner_count;
+    coal_count += 1 * miner_count;
+}
+
+function Drill() {
+    gold_ore_count += 10 * drill_count;
+    coal_count += 10 * drill_count;
 }
 
 // mine gold
@@ -235,12 +244,22 @@ diamond_pick_upgrade.addEventListener('click', () => {
 
 // hire workers
 miner_hire.addEventListener('click', async () => {
-    miner_count += 1
+    miner_count += 1;
+});
+
+// buy drill
+drill_hire.addEventListener('click', async () => {
+    drill_count += 1;
 });
 
 // workers mining 
 if (basic_worker_count >= 1) {
     setInterval(Miner, 10000) // 10 second interval
+};
+
+// drill mining
+if (drill_count >= 1) {
+    setInterval(Drill, 20000) // 20 second interval
 };
 
 // save to local storage every 5 seconds
