@@ -52,7 +52,7 @@ Power plant upgrade to reduce smelting costs
 
 # Extras & Replayability
 
-Achievements and milestones
+Achievements and milestones ⬛
 
 Random events (e.g., “Gold Rush” for double income for 30 seconds)
 

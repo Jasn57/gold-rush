@@ -30,6 +30,11 @@ let gold_pick_status = 'not_purchased';
 let emerald_pick_status = 'not_purchased';
 let diamond_pick_status = 'not_purchased';
 
+let millionare_status = 'not_achieved';
+let mine_count = '0';
+let mine_count_status1 ='not_achieved';
+let mine_count_status2 ='not_achieved';
+
 let miner_count = 0;
 let drill_count = 0;
 
@@ -49,6 +54,11 @@ iron_pick_status = localStorage.getItem("iron_pick_status") || "not_purchased";
 gold_pick_status = localStorage.getItem("gold_pick_status") || "not_purchased";
 emerald_pick_status = localStorage.getItem("emerald_pick_status") || "not_purchased";
 diamond_pick_status = localStorage.getItem("diamond_pick_status") || "not_purchased";
+
+millionare_status = localStorage.getItem("millionare_status") || not_achieved;
+mine_count = localStorage.setItem("millionare_status") || 0
+mine_count_status1 = localStorage.setItem("mine_count_status1") || not_achieved;
+mine_count_status2 = localStorage.setItem("mine_count_status2") || not_achieved;
 
 miner_count = localStorage.getItem("miner_count") || 0;
 drill_count = localStorage.getItem("drill_count") || 0;
@@ -71,6 +81,11 @@ function saveGame() {
   localStorage.setItem("emerald_pick_status", emerald_pick_status);
   localStorage.setItem("diamond_pick_status", diamond_pick_status);
 
+  localStorage.setItem("millionare_status", millionare_status);
+  localStorage.setItem("mine_count", mine_count);
+  localStorage.setItem("mine_count_status1", mine_count_status1);
+  localStorage.setItem("mine_count_status2", mine_count_status2);
+
   localStorage.setItem("miner_count", miner_count);
   localStorage.setItem("drill_count", drill_count);
 }
@@ -90,6 +105,7 @@ function Drill() {
 gold_mine_button.addEventListener('click', () => {
     gold_ore_count += 1 * multiplier;
     pick_durability -= 1;
+    mine_count += 1;
     document.getElementById("gold_ore_count_output").innerHTML = `<p>You have: ${gold_ore_count} Gold Ore</p>`;
 });
 
@@ -97,12 +113,20 @@ gold_mine_button.addEventListener('click', () => {
 coal_mine_button.addEventListener('click', () => {
     coal_count += 1 * multiplier;
     pick_durability -= 1;
+    mine_count += 1;
     document.getElementById("coal_count_output").innerHTML = `<p>You have: ${coal_count} Coal</p>`;
 });
 
 // if pick breaks
 if (pick_durability <= 0) {
     document.getElementById('random_output').innerHTML = `<p> Your pickaxe broke, buy a new one.</p>`;
+    wood_pick_status = 'not_purchased';
+    stone_pick_status = 'not_purchased';
+    copper_pick_status = 'not_purchased';
+    iron_pick_status = 'not_purchased';
+    gold_pick_status = 'not_purchased';
+    emerald_pick_status = 'not_purchased';
+    diamond_pick_status = 'not_purchased';
 }
 
 // smelting
@@ -261,6 +285,22 @@ if (basic_worker_count >= 1) {
 if (drill_count >= 1) {
     setInterval(Drill, 20000) // 20 second interval
 };
+
+// achievments
+if (cash_count >= 1000000, millionare_status = 'not_achieved') {
+    document.getElementById('random_output').innerHTML = `<p>Achievment "Millionare" Completed</p>`;
+    millionare_status = 'achieved';
+}
+
+if (mine_count >= 1000, mine_count_status1 = not_achieved) {
+    document.getElementById('random_output').innerHTML = `<p>Achievment "Touch Grass" Completed</p>`;
+    mine_count_status1 = 'achieved';
+}
+
+if (mine_count >= 5000, mine_count_status2) {
+    document.getElementById('random_output').innerHTML = `<p>Achievment "Seriously Touch Grass" Completed</p>`;
+    mine_count_status2 = 'achieved';
+}
 
 // save to local storage every 5 seconds
 setInterval(saveGame, 5000);
