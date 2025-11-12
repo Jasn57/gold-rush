@@ -4,6 +4,7 @@ const smelt_button = document.getElementById('smelt_button');
 const sell_button = document.getElementById('sell_button');
 const miner_hire = document.getElementById('miner_hire');
 const drill_hire = document.getElementById('drill_hire');
+const blacksmith_hire = document.getElementById('blacksmith_hire');
 const prestige_up = document.getElementById('prestige_up');
 
 const wood_pick_upgrade = document.getElementById('wood_pick_upgrade');
@@ -37,6 +38,7 @@ let mine_count_status2 ='not_achieved';
 
 let miner_count = 0;
 let drill_count = 0;
+let blacksmith_status = 'not_purchased';
 
 // load from local storage
 gold_ore_count = parseInt(localStorage.getItem("gold_ore_count")) || 0;
@@ -55,13 +57,14 @@ gold_pick_status = localStorage.getItem("gold_pick_status") || "not_purchased";
 emerald_pick_status = localStorage.getItem("emerald_pick_status") || "not_purchased";
 diamond_pick_status = localStorage.getItem("diamond_pick_status") || "not_purchased";
 
-millionare_status = localStorage.getItem("millionare_status") || not_achieved;
+millionare_status = localStorage.getItem("millionare_status") || "not_achieved";
 mine_count = localStorage.setItem("millionare_status") || 0
-mine_count_status1 = localStorage.setItem("mine_count_status1") || not_achieved;
-mine_count_status2 = localStorage.setItem("mine_count_status2") || not_achieved;
+mine_count_status1 = localStorage.setItem("mine_count_status1") || "not_achieved";
+mine_count_status2 = localStorage.setItem("mine_count_status2") || "not_achieved";
 
 miner_count = localStorage.getItem("miner_count") || 0;
 drill_count = localStorage.getItem("drill_count") || 0;
+blacksmith_status = localStorage.getItem("blacksmith_status") || "purchased";
 
 // save progress to local storage
 function saveGame() {
@@ -88,17 +91,7 @@ function saveGame() {
 
   localStorage.setItem("miner_count", miner_count);
   localStorage.setItem("drill_count", drill_count);
-}
-
-// function for basic miner
-function Miner() {
-    gold_ore_count += 1 * miner_count;
-    coal_count += 1 * miner_count;
-}
-
-function Drill() {
-    gold_ore_count += 10 * drill_count;
-    coal_count += 10 * drill_count;
+  localStorage.setItem("blacksmith_count", blacksmith_count);
 }
 
 // mine gold
@@ -271,19 +264,41 @@ miner_hire.addEventListener('click', async () => {
     miner_count += 1;
 });
 
-// buy drill
+blacksmith_hire.addEventListener('click', async () => {
+    blacksmith_status = 'purchased';
+});
+
 drill_hire.addEventListener('click', async () => {
     drill_count += 1;
 });
 
-// workers mining 
+// worker fucntions
+function Miner() {
+    gold_ore_count += 1 * miner_count;
+    coal_count += 1 * miner_count;
+}
+
+function Drill() {
+    gold_ore_count += 10 * drill_count;
+    coal_count += 10 * drill_count;
+}
+
+function Blacksmith() {
+    gold_ore_count -= 1;
+    coal_count -= 1;
+    gold_bar_count += 1;
+}
+
 if (basic_worker_count >= 1) {
     setInterval(Miner, 10000) // 10 second interval
 };
 
-// drill mining
 if (drill_count >= 1) {
     setInterval(Drill, 20000) // 20 second interval
+};
+
+if (blacksmith_status = 'purchased') {
+    setInterval(Blacksmith, 15000) // 15 second interval
 };
 
 // achievments
