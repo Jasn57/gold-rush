@@ -5,6 +5,7 @@ const sell_button = document.getElementById('sell_button');
 const miner_hire = document.getElementById('miner_hire');
 const drill_hire = document.getElementById('drill_hire');
 const blacksmith_hire = document.getElementById('blacksmith_hire');
+const banker_hire = document.getElementById('banker_hire');
 const prestige_up = document.getElementById('prestige_up');
 
 const wood_pick_upgrade = document.getElementById('wood_pick_upgrade');
@@ -39,6 +40,7 @@ let mine_count_status2 ='not_achieved';
 let miner_count = 0;
 let drill_count = 0;
 let blacksmith_status = 'not_purchased';
+let banker_status = 'not_purchased';
 
 // load from local storage
 gold_ore_count = parseInt(localStorage.getItem("gold_ore_count")) || 0;
@@ -64,7 +66,8 @@ mine_count_status2 = localStorage.setItem("mine_count_status2") || "not_achieved
 
 miner_count = localStorage.getItem("miner_count") || 0;
 drill_count = localStorage.getItem("drill_count") || 0;
-blacksmith_status = localStorage.getItem("blacksmith_status") || "purchased";
+blacksmith_status = localStorage.getItem("blacksmith_status") || "not_purchased";
+banker_status = localStorage.getItem("banker_status") || "not_purchased";
 
 // save progress to local storage
 function saveGame() {
@@ -264,58 +267,80 @@ miner_hire.addEventListener('click', async () => {
     miner_count += 1;
 });
 
+drill_hire.addEventListener('click', async () => {
+    drill_count += 1;
+});
+
 blacksmith_hire.addEventListener('click', async () => {
     blacksmith_status = 'purchased';
 });
 
-drill_hire.addEventListener('click', async () => {
-    drill_count += 1;
+banker_hire.addEventListener('click', async () => {
+    banker_status = 'purchased';
 });
 
 // worker fucntions
 function Miner() {
     gold_ore_count += 1 * miner_count;
     coal_count += 1 * miner_count;
-}
+    document.getElementById('gold_ore_count_output').innerHTML = `You have: ${gold_ore_count} Gold Ore`;
+    document.getElementById('coal_count_output').innerHTML = `You have: ${coal_count} Coal`;
+};
 
 function Drill() {
     gold_ore_count += 10 * drill_count;
     coal_count += 10 * drill_count;
-}
+    document.getElementById('gold_ore_count_output').innerHTML = `You have: ${gold_ore_count} Gold Ore`;
+    document.getElementById('coal_count_output').innerHTML = `You have: ${coal_count} Coal`;
+};
 
 function Blacksmith() {
     gold_ore_count -= 1;
     coal_count -= 1;
     gold_bar_count += 1;
-}
+    document.getElementById('gold_ore_count_output').innerHTML = `You have: ${gold_ore_count} Gold Ore`;
+    document.getElementById('coal_count_output').innerHTML = `You have: ${coal_count} Coal`;
+    document.getElementById('gold_bar_count_output').innerHTML = `You have: ${gold_bar_count} Gold Bars`;
+};
+
+function Banker() {
+    gold_bar_count -= 1;
+    cash_count += 10;
+    document.getElementById('gold_bar_count_output').innerHTML = `You have: ${gold_bar_count} Gold Bars`;
+    document.getElementById('cash_count_output').innerHTMl = `You have: ${cash_count} Dollars`
+};
 
 if (basic_worker_count >= 1) {
     setInterval(Miner, 10000) // 10 second interval
 };
 
 if (drill_count >= 1) {
-    setInterval(Drill, 20000) // 20 second interval
+    setInterval(Drill, 30000) // 30 second interval
 };
 
-if (blacksmith_status = 'purchased') {
+if (blacksmith_status = 'purchased', gold_ore_count >= 1, coal_count >= 1) {
     setInterval(Blacksmith, 15000) // 15 second interval
+};
+
+if (banker_status = purchased, gold_bar_count >= 1) {
+    setInterval(Banker, 15000) // 15 second interval
 };
 
 // achievments
 if (cash_count >= 1000000, millionare_status = 'not_achieved') {
     document.getElementById('random_output').innerHTML = `<p>Achievment "Millionare" Completed</p>`;
     millionare_status = 'achieved';
-}
+};
 
 if (mine_count >= 1000, mine_count_status1 = not_achieved) {
     document.getElementById('random_output').innerHTML = `<p>Achievment "Touch Grass" Completed</p>`;
     mine_count_status1 = 'achieved';
-}
+};
 
 if (mine_count >= 5000, mine_count_status2) {
     document.getElementById('random_output').innerHTML = `<p>Achievment "Seriously Touch Grass" Completed</p>`;
     mine_count_status2 = 'achieved';
-}
+};
 
 // save to local storage every 5 seconds
 setInterval(saveGame, 5000);

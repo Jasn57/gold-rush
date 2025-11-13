@@ -45,7 +45,9 @@ Miner automation tiers (apprentice → foreman → industrial drill) ✅
 
 Smelter automation (auto-process ores using stored fuel) ✅
 
-Power plant upgrade to reduce smelting costs
+selling automation (bank teller) ✅
+
+Power plant upgrade to reduce smelting costs 
 
 1 upgrade button for picks rather than multiple buttons 
 
