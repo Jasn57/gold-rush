@@ -2,10 +2,17 @@ const gold_mine_button = document.getElementById('gold_mine_button');
 const coal_mine_button = document.getElementById('coal_mine_button');
 const smelt_button = document.getElementById('smelt_button');
 const sell_button = document.getElementById('sell_button');
+
 const miner_hire = document.getElementById('miner_hire');
 const drill_hire = document.getElementById('drill_hire');
 const blacksmith_hire = document.getElementById('blacksmith_hire');
 const banker_hire = document.getElementById('banker_hire');
+
+const gold_ore_storage_upgrade = document.getElementById('gold_ore_storage_upgrade');
+const gold_bar_storage_upgrade = document.getElementById('gold_bar_storage_upgrade');
+const cash_storage_upgrade = document.getElementById('cash_storage_upgrade');
+const coal_storage_upgrade = document.getElementById('coal_storage_upgrade');
+
 const prestige_up = document.getElementById('prestige_up');
 
 const wood_pick_upgrade = document.getElementById('wood_pick_upgrade');
@@ -34,8 +41,13 @@ let diamond_pick_status = 'not_purchased';
 
 let millionare_status = 'not_achieved';
 let mine_count = '0';
-let mine_count_status1 ='not_achieved';
-let mine_count_status2 ='not_achieved';
+let mine_count_status1 = 'not_achieved';
+let mine_count_status2 = 'not_achieved';
+
+let cash_storage_upgrade_status = 'not_purchased';
+let coal_storage_upgrade_status = 'not_purchased';
+let gold_ore_storage_upgrade_status = 'not_purchased';
+let gold_bar_storage_upgrade_status = 'not_purchased';
 
 let miner_count = 0;
 let drill_count = 0;
@@ -64,6 +76,11 @@ mine_count = localStorage.setItem("millionare_status") || 0
 mine_count_status1 = localStorage.setItem("mine_count_status1") || "not_achieved";
 mine_count_status2 = localStorage.setItem("mine_count_status2") || "not_achieved";
 
+cash_storage_upgrade_status = localStorage.setItem("cash_storage_upgrade_status") || "not_pruchased";
+coal_storage_upgrade_status = localStorage.setItem("coal_storage_upgrade_status") || "not_pruchased";
+gold_ore_storage_upgrade_status = localStorage.setItem("gold_ore_storage_upgrade_status") || "not_pruchased";
+gold_bar_storage_upgrade_status = localStorage.setItem("gold_bar_storage_upgrade_status") || "not_pruchased";
+
 miner_count = localStorage.getItem("miner_count") || 0;
 drill_count = localStorage.getItem("drill_count") || 0;
 blacksmith_status = localStorage.getItem("blacksmith_status") || "not_purchased";
@@ -91,6 +108,11 @@ function saveGame() {
   localStorage.setItem("mine_count", mine_count);
   localStorage.setItem("mine_count_status1", mine_count_status1);
   localStorage.setItem("mine_count_status2", mine_count_status2);
+
+  localStorage.setItem("cash_storage_upgrade_status", cash_storage_upgrade_status);
+  localStorage.setItem("coal_storage_upgrade_status", coal_storage_upgrade_status);
+  localStorage.setItem("gold_ore_storage_upgrade_status", gold_ore_storage_upgrade_status);
+  localStorage.setItem("gold_bar_storage_upgrade_status", gold_bar_storage_upgrade_status);
 
   localStorage.setItem("miner_count", miner_count);
   localStorage.setItem("drill_count", drill_count);
@@ -147,25 +169,58 @@ sell_button.addEventListener('click', () => {
     }
 });
 
+// storage upgrades
+coal_storage_upgrade.addEventListener('click', async () => {
+    coal_storage_upgrade_status = 'purchased';
+});
+
+cash_storage_upgrade.addEventListener('click', async () => {
+    cash_storage_upgrade_status = 'purchased';
+});
+
+gold_ore_storage_upgrade.addEventListener('click', async () => {
+    gold_ore_storage_upgrade_status = 'purchased';
+});
+
+gold_bar_storage_upgrade.addEventListener('click', async () => {
+    gold_bar_storage_upgrade_status = 'purchased';
+});
+
 // storage limits
-if (gold_ore_count > 10000) { // 10k
+if (gold_ore_count > 10000, gold_ore_storage_upgrade_status = 'not_purchased') { // 10k
   gold_ore_count = 10000;
   document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for gold ore</p>`;
 }
 
-if (gold_bar_count > 10000) { // 10k
+else {
+    return null
+};
+
+if (gold_bar_count > 10000, gold_bar_upgrade_status = 'not_purchased') { // 10k
   gold_bar_count = 10000;
   document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for gold bars</p>`;
 }
 
-if (coal_count > 10000) { // 10k
+else {
+    return null
+}
+
+if (coal_count > 10000, coal_storage_upgrade_status = 'not_purchased') { // 10k
   coal_count = 10000;
   document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for coal</p>`;
 }
 
-if (cash_count > 10000000) { // 1m
+else {
+    return null
+}
+
+if (cash_count > 10000000, cash_count_storage_upgrade = 'not_purchased') { // 1m
   cash_count = 10000;
   document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for cash</p>`;
+}
+
+else {
+    return null
 }
 
 // prestige
