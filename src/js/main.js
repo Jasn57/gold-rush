@@ -30,6 +30,7 @@ let gold_bar_count = 0;
 let multiplier = 0;
 let pick_durability = Infinity;
 let prestige = 0;
+let gold_bar_price = 80;
 
 let wood_pick_status = 'not_purchased';
 let stone_pick_status = 'not_purchased';
@@ -62,6 +63,7 @@ gold_bar_count = parseInt(localStorage.getItem("gold_bar_count")) || 0;
 multiplier = parseInt(localStorage.getItem("multiplier")) || 0;
 pick_durability = parseInt(localStorage.getItem("pick_durability")) || Infinity;
 prestige = parseInt(localStorage.getItem("prestige")) || 0;
+gold_bar_price = parseInt(localStorage.getItem("gold_bar_price")) || 10;
 
 wood_pick_status = localStorage.getItem("wood_pick_status") || "not_purchased";
 stone_pick_status = localStorage.getItem("stone_pick_status") || "not_purchased";
@@ -95,6 +97,7 @@ function saveGame() {
   localStorage.setItem("multiplier", multiplier);
   localStorage.setItem("pick_durability", pick_durability);
   localStorage.setItem("prestige", prestige);
+  localStorage.setItem("gold_bar_price", gold_bar_price);
 
   localStorage.setItem("wood_pick_status", wood_pick_status);
   localStorage.setItem("stone_pick_status", stone_pick_status);
@@ -135,17 +138,34 @@ coal_mine_button.addEventListener('click', () => {
     document.getElementById("coal_count_output").innerHTML = `<p>You have: ${coal_count} Coal</p>`;
 });
 
-// if pick breaks
-if (pick_durability <= 0) {
-    document.getElementById('random_output').innerHTML = `<p> Your pickaxe broke, buy a new one.</p>`;
-    wood_pick_status = 'not_purchased';
-    stone_pick_status = 'not_purchased';
-    copper_pick_status = 'not_purchased';
-    iron_pick_status = 'not_purchased';
-    gold_pick_status = 'not_purchased';
-    emerald_pick_status = 'not_purchased';
-    diamond_pick_status = 'not_purchased';
+// gold market prices
+function Price() {
+    gold_bar_price = Math.floor(Math.random() * (200 - 80 + 1)) + 80;
+    document.getElementById('gold_bar_price_output').innerHTML = 
+        `<p>Gold bar price: ${gold_bar_price}</p>`;
 }
+
+setInterval(Price, 20000); // 20 seconds
+
+// sell gold bar
+sell_button.addEventListener('click', () => {
+    if (gold_bar_count >= 1) {
+        gold_bar_count -= 1;
+        cash_count += gold_bar_price;
+        gold_bar_price -= 5;
+        if (gold_bar_price < 1) { 
+            gold_bar_price = 1;
+        }
+        document.getElementById("gold_bar_count_output").innerHTML = 
+            `<p>You have: ${gold_bar_count} Gold Bars</p>`;
+
+        document.getElementById("cash_count_output").innerHTML = 
+            `<p>You have: ${cash_count} Dollars</p>`;
+
+        document.getElementById("gold_bar_price_output").innerHTML = 
+            `<p>Gold bar price: ${gold_bar_price}</p>`;
+    }
+});
 
 // smelting
 smelt_button.addEventListener('click', () => {
@@ -156,16 +176,6 @@ smelt_button.addEventListener('click', () => {
         document.getElementById("gold_bar_count_output").innerHTML = `<p>You have: ${gold_bar_count} Gold Bars</p>`;
         document.getElementById("gold_ore_count_output").innerHTML = `<p>You have: ${gold_ore_count} Gold Ore</p>`;
         document.getElementById("coal_count_output").innerHTML = `<p>You have: ${coal_count} Coal</p>`;
-    }
-});
-
-// sell gold bar
-sell_button.addEventListener('click', () => {
-    if (gold_bar_count >= 1) {
-        gold_bar_count -= 1;
-        cash_count += 10; 
-        document.getElementById("gold_bar_count_output").innerHTML = `<p>You have: ${gold_bar_count} Gold Bars</p>`;
-        document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
@@ -317,6 +327,18 @@ diamond_pick_upgrade.addEventListener('click', () => {
     }
 });
 
+// if pick breaks
+if (pick_durability <= 0) {
+    document.getElementById('random_output').innerHTML = `<p> Your pickaxe broke, buy a new one.</p>`;
+    wood_pick_status = 'not_purchased';
+    stone_pick_status = 'not_purchased';
+    copper_pick_status = 'not_purchased';
+    iron_pick_status = 'not_purchased';
+    gold_pick_status = 'not_purchased';
+    emerald_pick_status = 'not_purchased';
+    diamond_pick_status = 'not_purchased';
+}
+
 // hire workers
 miner_hire.addEventListener('click', async () => {
     miner_count += 1;
@@ -366,19 +388,19 @@ function Banker() {
 };
 
 if (basic_worker_count >= 1) {
-    setInterval(Miner, 10000) // 10 second interval
+    setInterval(Miner, 10000) // 10 second
 };
 
 if (drill_count >= 1) {
-    setInterval(Drill, 30000) // 30 second interval
+    setInterval(Drill, 30000) // 30 second
 };
 
 if (blacksmith_status = 'purchased', gold_ore_count >= 1, coal_count >= 1) {
-    setInterval(Blacksmith, 15000) // 15 second interval
+    setInterval(Blacksmith, 15000) // 15 second
 };
 
 if (banker_status = purchased, gold_bar_count >= 1) {
-    setInterval(Banker, 15000) // 15 second interval
+    setInterval(Banker, 15000) // 15 second
 };
 
 // achievments
@@ -397,5 +419,5 @@ if (mine_count >= 5000, mine_count_status2) {
     mine_count_status2 = 'achieved';
 };
 
-// save to local storage every 5 seconds
+// 5 seconds
 setInterval(saveGame, 5000);
