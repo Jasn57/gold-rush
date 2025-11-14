@@ -127,7 +127,8 @@ gold_mine_button.addEventListener('click', () => {
     gold_ore_count += 1 * multiplier;
     pick_durability -= 1;
     mine_count += 1;
-    document.getElementById("gold_ore_count_output").innerHTML = `<p>You have: ${gold_ore_count} Gold Ore</p>`;
+    document.getElementById("gold_ore_count_output").innerHTML = 
+    `<p>You have: ${gold_ore_count} Gold Ore</p>`;
 });
 
 // mine coal
@@ -135,7 +136,8 @@ coal_mine_button.addEventListener('click', () => {
     coal_count += 1 * multiplier;
     pick_durability -= 1;
     mine_count += 1;
-    document.getElementById("coal_count_output").innerHTML = `<p>You have: ${coal_count} Coal</p>`;
+    document.getElementById("coal_count_output").innerHTML = 
+    `<p>You have: ${coal_count} Coal</p>`;
 });
 
 // gold market prices
@@ -173,9 +175,12 @@ smelt_button.addEventListener('click', () => {
         gold_ore_count -= 1;
         coal_count -= 1;
         gold_bar_count += 1;
-        document.getElementById("gold_bar_count_output").innerHTML = `<p>You have: ${gold_bar_count} Gold Bars</p>`;
-        document.getElementById("gold_ore_count_output").innerHTML = `<p>You have: ${gold_ore_count} Gold Ore</p>`;
-        document.getElementById("coal_count_output").innerHTML = `<p>You have: ${coal_count} Coal</p>`;
+        document.getElementById("gold_bar_count_output").innerHTML = 
+        `<p>You have: ${gold_bar_count} Gold Bars</p>`;
+        document.getElementById("gold_ore_count_output").innerHTML = 
+        `<p>You have: ${gold_ore_count} Gold Ore</p>`;
+        document.getElementById("coal_count_output").innerHTML = 
+        `<p>You have: ${coal_count} Coal</p>`;
     }
 });
 
@@ -199,7 +204,8 @@ gold_bar_storage_upgrade.addEventListener('click', async () => {
 // storage limits
 if (gold_ore_count > 10000, gold_ore_storage_upgrade_status = 'not_purchased') { // 10k
   gold_ore_count = 10000;
-  document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for gold ore</p>`;
+  document.getElementById('random_output').innerHTML = 
+  `<p>You ran out of storage space for gold ore</p>`;
 }
 
 else {
@@ -208,7 +214,8 @@ else {
 
 if (gold_bar_count > 10000, gold_bar_upgrade_status = 'not_purchased') { // 10k
   gold_bar_count = 10000;
-  document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for gold bars</p>`;
+  document.getElementById('random_output').innerHTML = 
+  `<p>You ran out of storage space for gold bars</p>`;
 }
 
 else {
@@ -217,7 +224,8 @@ else {
 
 if (coal_count > 10000, coal_storage_upgrade_status = 'not_purchased') { // 10k
   coal_count = 10000;
-  document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for coal</p>`;
+  document.getElementById('random_output').innerHTML = 
+  `<p>You ran out of storage space for coal</p>`;
 }
 
 else {
@@ -226,7 +234,8 @@ else {
 
 if (cash_count > 10000000, cash_count_storage_upgrade = 'not_purchased') { // 1m
   cash_count = 10000;
-  document.getElementById('random_output').innerHTML = `<p>You ran out of storage space for cash</p>`;
+  document.getElementById('random_output').innerHTML = 
+  `<p>You ran out of storage space for cash</p>`;
 }
 
 else {
@@ -258,78 +267,86 @@ prestige_up.addEventListener('click', async () => {
 
 // upgrades
 wood_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 100 && wood_pick_status === 'not_purchased') {
-        cash_count -= 100;
+    if (cash_count >= 250 && wood_pick_status === 'not_purchased') {
+        cash_count -= 250;
         multiplier += 1;
         pick_durability = 1000;
         wood_pick_status = 'purchased';
-        document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
+        document.getElementById("cash_count_output").innerHTML = 
+        `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 stone_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 500 && stone_pick_status === 'not_purchased') {
-        cash_count -= 500;
+    if (cash_count >= 1000 && stone_pick_status === 'not_purchased') {
+        cash_count -= 1000;
         multiplier += 2;
         pick_durability = 2500;
         stone_pick_status = 'purchased';
-        document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
+        document.getElementById("cash_count_output").innerHTML = 
+        `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 copper_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 1500 && copper_pick_status === 'not_purchased') {
-        cash_count -= 1500;
+    if (cash_count >= 5000 && copper_pick_status === 'not_purchased') {
+        cash_count -= 5000;
         multiplier += 3;
         pick_durability = 3000;
         copper_pick_status = 'purchased';
-        document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
+        document.getElementById("cash_count_output").innerHTML = 
+        `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 iron_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 3000 && iron_pick_status === 'not_purchased') {
-        cash_count -= 3000;
+    if (cash_count >= 15000 && iron_pick_status === 'not_purchased') {
+        cash_count -= 15000;
         multiplier += 4;
         pick_durability = 4000;
         iron_pick_status = 'purchased';
-        document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
+        document.getElementById("cash_count_output").innerHTML = 
+        `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 gold_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 5000 && gold_pick_status === 'not_purchased') {
-        cash_count -= 5000;
+    if (cash_count >= 40000 && gold_pick_status === 'not_purchased') {
+        cash_count -= 40000;
         multiplier += 6;
         pick_durability = 5000;
         gold_pick_status = 'purchased';
-        document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
+        document.getElementById("cash_count_output").innerHTML = 
+        `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 emerald_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 8000 && emerald_pick_status === 'not_purchased') {
-        cash_count -= 8000;
+    if (cash_count >= 100000 && emerald_pick_status === 'not_purchased') {
+        cash_count -= 100000;
         multiplier += 8;
         pick_durability = 5500;
         emerald_pick_status = 'purchased';
-        document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
+        document.getElementById("cash_count_output").innerHTML = 
+        `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 diamond_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 12000 && diamond_pick_status === 'not_purchased') {
+    if (cash_count >= 250000 && diamond_pick_status === 'not_purchased') {
         cash_count -= 12000;
         multiplier += 10;
         pick_durability = 7000;
         diamond_pick_status = 'purchased';
-        document.getElementById("cash_count_output").innerHTML = `<p>You have: ${cash_count} Dollars</p>`;
+        document.getElementById("cash_count_output").innerHTML = 
+        `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 // if pick breaks
 if (pick_durability <= 0) {
-    document.getElementById('random_output').innerHTML = `<p> Your pickaxe broke, buy a new one.</p>`;
+    document.getElementById('random_output').innerHTML = 
+    `<p> Your pickaxe broke, buy a new one.</p>`;
     wood_pick_status = 'not_purchased';
     stone_pick_status = 'not_purchased';
     copper_pick_status = 'not_purchased';
@@ -360,31 +377,40 @@ banker_hire.addEventListener('click', async () => {
 function Miner() {
     gold_ore_count += 1 * miner_count;
     coal_count += 1 * miner_count;
-    document.getElementById('gold_ore_count_output').innerHTML = `You have: ${gold_ore_count} Gold Ore`;
-    document.getElementById('coal_count_output').innerHTML = `You have: ${coal_count} Coal`;
+    document.getElementById('gold_ore_count_output').innerHTML = 
+    `You have: ${gold_ore_count} Gold Ore`;
+    document.getElementById('coal_count_output').innerHTML = 
+    `You have: ${coal_count} Coal`;
 };
 
 function Drill() {
     gold_ore_count += 10 * drill_count;
     coal_count += 10 * drill_count;
-    document.getElementById('gold_ore_count_output').innerHTML = `You have: ${gold_ore_count} Gold Ore`;
-    document.getElementById('coal_count_output').innerHTML = `You have: ${coal_count} Coal`;
+    document.getElementById('gold_ore_count_output').innerHTML = 
+    `You have: ${gold_ore_count} Gold Ore`;
+    document.getElementById('coal_count_output').innerHTML = 
+    `You have: ${coal_count} Coal`;
 };
 
 function Blacksmith() {
     gold_ore_count -= 1;
     coal_count -= 1;
     gold_bar_count += 1;
-    document.getElementById('gold_ore_count_output').innerHTML = `You have: ${gold_ore_count} Gold Ore`;
-    document.getElementById('coal_count_output').innerHTML = `You have: ${coal_count} Coal`;
-    document.getElementById('gold_bar_count_output').innerHTML = `You have: ${gold_bar_count} Gold Bars`;
+    document.getElementById('gold_ore_count_output').innerHTML = 
+    `You have: ${gold_ore_count} Gold Ore`;
+    document.getElementById('coal_count_output').innerHTML = 
+    `You have: ${coal_count} Coal`;
+    document.getElementById('gold_bar_count_output').innerHTML = 
+    `You have: ${gold_bar_count} Gold Bars`;
 };
 
 function Banker() {
     gold_bar_count -= 1;
     cash_count += 10;
-    document.getElementById('gold_bar_count_output').innerHTML = `You have: ${gold_bar_count} Gold Bars`;
-    document.getElementById('cash_count_output').innerHTMl = `You have: ${cash_count} Dollars`
+    document.getElementById('gold_bar_count_output').innerHTML = 
+    `You have: ${gold_bar_count} Gold Bars`;
+    document.getElementById('cash_count_output').innerHTMl = 
+    `You have: ${cash_count} Dollars`
 };
 
 if (basic_worker_count >= 1) {
@@ -405,17 +431,20 @@ if (banker_status = purchased, gold_bar_count >= 1) {
 
 // achievments
 if (cash_count >= 1000000, millionare_status = 'not_achieved') {
-    document.getElementById('random_output').innerHTML = `<p>Achievment "Millionare" Completed</p>`;
+    document.getElementById('random_output').innerHTML = 
+    `<p>Achievment "Millionare" Completed</p>`;
     millionare_status = 'achieved';
 };
 
 if (mine_count >= 1000, mine_count_status1 = not_achieved) {
-    document.getElementById('random_output').innerHTML = `<p>Achievment "Touch Grass" Completed</p>`;
+    document.getElementById('random_output').innerHTML = 
+    `<p>Achievment "Touch Grass" Completed</p>`;
     mine_count_status1 = 'achieved';
 };
 
 if (mine_count >= 5000, mine_count_status2) {
-    document.getElementById('random_output').innerHTML = `<p>Achievment "Seriously Touch Grass" Completed</p>`;
+    document.getElementById('random_output').innerHTML = 
+    `<p>Achievment "Seriously Touch Grass" Completed</p>`;
     mine_count_status2 = 'achieved';
 };
 
