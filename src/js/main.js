@@ -243,7 +243,7 @@ else {
 }
 
 // prestige
-prestige_up.addEventListener('click', async () => {
+prestige_up.addEventListener('click', () => {
     prestige += 2;
 
     gold_ore_count = 0;
