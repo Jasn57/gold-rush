@@ -32,7 +32,7 @@ Crafting system (make jewelry or refined products for higher profits)
 
 # Resources & Items
 
-Add new ores: Iron, Silver, Platinum, etc.
+enchant gold
 
 Add rare gems that boost multipliers or unlock special upgrades
 
@@ -61,6 +61,8 @@ Random events (e.g., “Gold Rush” for double income for 30 seconds)
 Mining levels or XP system
 
 # UI & Quality of Life
+
+an acutal ui lol
 
 Local storage ✅
 
