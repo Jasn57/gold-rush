@@ -29,7 +29,6 @@ let cash_count = 0;
 let gold_bar_count = 0;
 let multiplier = 0;
 let pick_durability = Infinity;
-let prestige = 0;
 let gold_bar_price = 80;
 
 let wood_pick_status = 'not_purchased';
@@ -62,7 +61,6 @@ cash_count = parseInt(localStorage.getItem("cash_count")) || 0;
 gold_bar_count = parseInt(localStorage.getItem("gold_bar_count")) || 0;
 multiplier = parseInt(localStorage.getItem("multiplier")) || 0;
 pick_durability = parseInt(localStorage.getItem("pick_durability")) || Infinity;
-prestige = parseInt(localStorage.getItem("prestige")) || 0;
 gold_bar_price = parseInt(localStorage.getItem("gold_bar_price")) || 10;
 
 wood_pick_status = localStorage.getItem("wood_pick_status") || "not_purchased";
@@ -96,7 +94,6 @@ function saveGame() {
   localStorage.setItem("gold_bar_count", gold_bar_count);
   localStorage.setItem("multiplier", multiplier);
   localStorage.setItem("pick_durability", pick_durability);
-  localStorage.setItem("prestige", prestige);
   localStorage.setItem("gold_bar_price", gold_bar_price);
 
   localStorage.setItem("wood_pick_status", wood_pick_status);
@@ -201,69 +198,29 @@ gold_bar_storage_upgrade.addEventListener('click', async () => {
     gold_bar_storage_upgrade_status = 'purchased';
 });
 
-// storage limits
-if (gold_ore_count > 10000, gold_ore_storage_upgrade_status = 'not_purchased') { // 10k
+if (gold_ore_count > 10000 && gold_ore_storage_upgrade_status === 'not_purchased') {
   gold_ore_count = 10000;
-  document.getElementById('random_output').innerHTML = 
+  document.getElementById('random_output').innerHTML =
   `<p>You ran out of storage space for gold ore</p>`;
 }
 
-else {
-    return null
-};
-
-if (gold_bar_count > 10000, gold_bar_upgrade_status = 'not_purchased') { // 10k
+if (gold_bar_count > 10000 && gold_bar_storage_upgrade_status === 'not_purchased') {
   gold_bar_count = 10000;
-  document.getElementById('random_output').innerHTML = 
+  document.getElementById('random_output').innerHTML =
   `<p>You ran out of storage space for gold bars</p>`;
 }
 
-else {
-    return null
-}
-
-if (coal_count > 10000, coal_storage_upgrade_status = 'not_purchased') { // 10k
+if (coal_count > 10000 && coal_storage_upgrade_status === 'not_purchased') {
   coal_count = 10000;
-  document.getElementById('random_output').innerHTML = 
+  document.getElementById('random_output').innerHTML =
   `<p>You ran out of storage space for coal</p>`;
 }
 
-else {
-    return null
-}
-
-if (cash_count > 10000000, cash_count_storage_upgrade = 'not_purchased') { // 1m
-  cash_count = 10000;
-  document.getElementById('random_output').innerHTML = 
+if (cash_count > 10000000 && cash_storage_upgrade_status === 'not_purchased') {
+  cash_count = 10000000;
+  document.getElementById('random_output').innerHTML =
   `<p>You ran out of storage space for cash</p>`;
 }
-
-else {
-    return null
-}
-
-// prestige
-prestige_up.addEventListener('click', () => {
-    prestige += 2;
-
-    gold_ore_count = 0;
-    coal_count = 0; 
-    cash_count = 0;
-    gold_bar_count = 0;
-    multiplier = 0;
-    pick_durability = Infinity;
-
-    wood_pick_status = 'not_purchased';
-    stone_pick_status = 'not_purchased';
-    copper_pick_status = 'not_purchased';
-    iron_pick_status = 'not_purchased';
-    gold_pick_status = 'not_purchased';
-    emerald_pick_status = 'not_purchased';
-    diamond_pick_status = 'not_purchased';
-
-    miner_count = 0;
-
-});
 
 // upgrades
 wood_pick_upgrade.addEventListener('click', () => {
@@ -413,40 +370,42 @@ function Banker() {
     `You have: ${cash_count} Dollars`
 };
 
-if (basic_worker_count >= 1) {
-    setInterval(Miner, 10000) // 10 second
-};
+// worker activation
+if (miner_count >= 1) {
+    setInterval(Miner, 10000);
+}
 
 if (drill_count >= 1) {
-    setInterval(Drill, 30000) // 30 second
-};
+    setInterval(Drill, 30000);
+}
 
-if (blacksmith_status = 'purchased', gold_ore_count >= 1, coal_count >= 1) {
-    setInterval(Blacksmith, 15000) // 15 second
-};
+if (blacksmith_status === 'purchased' && gold_ore_count >= 1 && coal_count >= 1) {
+    setInterval(Blacksmith, 15000);
+}
 
-if (banker_status = purchased, gold_bar_count >= 1) {
-    setInterval(Banker, 15000) // 15 second
-};
+if (banker_status === 'purchased' && gold_bar_count >= 1) {
+    setInterval(Banker, 15000);
+}
 
 // achievments
-if (cash_count >= 1000000, millionare_status = 'not_achieved') {
-    document.getElementById('random_output').innerHTML = 
-    `<p>Achievment "Millionare" Completed</p>`;
+if (cash_count >= 1000000 && millionare_status === 'not_achieved') {
+    document.getElementById('random_output').innerHTML =
+    `<p>Achievement "Millionaire" Completed</p>`;
     millionare_status = 'achieved';
-};
+}
 
-if (mine_count >= 1000, mine_count_status1 = not_achieved) {
-    document.getElementById('random_output').innerHTML = 
-    `<p>Achievment "Touch Grass" Completed</p>`;
+if (mine_count >= 1000 && mine_count_status1 === 'not_achieved') {
+    document.getElementById('random_output').innerHTML =
+    `<p>Achievement "Touch Grass" Completed</p>`;
     mine_count_status1 = 'achieved';
-};
+}
 
-if (mine_count >= 5000, mine_count_status2) {
-    document.getElementById('random_output').innerHTML = 
-    `<p>Achievment "Seriously Touch Grass" Completed</p>`;
+if (mine_count >= 5000 && mine_count_status2 === 'not_achieved') {
+    document.getElementById('random_output').innerHTML =
+    `<p>Achievement "Seriously Touch Grass" Completed</p>`;
     mine_count_status2 = 'achieved';
-};
+}
+
 
 // 5 seconds
 setInterval(saveGame, 5000);
