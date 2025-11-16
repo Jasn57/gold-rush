@@ -1,3 +1,5 @@
+⬛ ✅
+
 # Core Gameplay
 
 Mine coal and ores ✅
@@ -17,9 +19,7 @@ Hire miners to automate mining ✅
 
 Market with fluctuating gold bar prices ✅
 
-Random trader who offers better deals occasionally
-
-Smelting efficiency upgrades (use less coal or faster smelt time)
+Random trader who offers better deals occasionally ✅
 
 Storage limits ✅
 
@@ -50,9 +50,7 @@ Power plant upgrade to reduce smelting costs
 1 upgrade button for picks rather than multiple buttons 
 
 
-# Extras & Replayability
-
-Achievements and milestones ⬛
+# Extras
 
 Random events (e.g., “Gold Rush” for double income for 30 seconds)
 

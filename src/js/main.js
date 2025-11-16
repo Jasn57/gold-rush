@@ -39,11 +39,6 @@ let gold_pick_status = 'not_purchased';
 let emerald_pick_status = 'not_purchased';
 let diamond_pick_status = 'not_purchased';
 
-let millionare_status = 'not_achieved';
-let mine_count = '0';
-let mine_count_status1 = 'not_achieved';
-let mine_count_status2 = 'not_achieved';
-
 let cash_storage_upgrade_status = 'not_purchased';
 let coal_storage_upgrade_status = 'not_purchased';
 let gold_ore_storage_upgrade_status = 'not_purchased';
@@ -70,11 +65,6 @@ iron_pick_status = localStorage.getItem("iron_pick_status") || "not_purchased";
 gold_pick_status = localStorage.getItem("gold_pick_status") || "not_purchased";
 emerald_pick_status = localStorage.getItem("emerald_pick_status") || "not_purchased";
 diamond_pick_status = localStorage.getItem("diamond_pick_status") || "not_purchased";
-
-millionare_status = localStorage.getItem("millionare_status") || "not_achieved";
-mine_count = localStorage.setItem("millionare_status") || 0
-mine_count_status1 = localStorage.setItem("mine_count_status1") || "not_achieved";
-mine_count_status2 = localStorage.setItem("mine_count_status2") || "not_achieved";
 
 cash_storage_upgrade_status = localStorage.setItem("cash_storage_upgrade_status") || "not_pruchased";
 coal_storage_upgrade_status = localStorage.setItem("coal_storage_upgrade_status") || "not_pruchased";
@@ -104,11 +94,6 @@ function saveGame() {
   localStorage.setItem("emerald_pick_status", emerald_pick_status);
   localStorage.setItem("diamond_pick_status", diamond_pick_status);
 
-  localStorage.setItem("millionare_status", millionare_status);
-  localStorage.setItem("mine_count", mine_count);
-  localStorage.setItem("mine_count_status1", mine_count_status1);
-  localStorage.setItem("mine_count_status2", mine_count_status2);
-
   localStorage.setItem("cash_storage_upgrade_status", cash_storage_upgrade_status);
   localStorage.setItem("coal_storage_upgrade_status", coal_storage_upgrade_status);
   localStorage.setItem("gold_ore_storage_upgrade_status", gold_ore_storage_upgrade_status);
@@ -123,7 +108,6 @@ function saveGame() {
 gold_mine_button.addEventListener('click', () => {
     gold_ore_count += 1 * multiplier;
     pick_durability -= 1;
-    mine_count += 1;
     document.getElementById("gold_ore_count_output").innerHTML = 
     `<p>You have: ${gold_ore_count} Gold Ore</p>`;
 });
@@ -132,7 +116,6 @@ gold_mine_button.addEventListener('click', () => {
 coal_mine_button.addEventListener('click', () => {
     coal_count += 1 * multiplier;
     pick_durability -= 1;
-    mine_count += 1;
     document.getElementById("coal_count_output").innerHTML = 
     `<p>You have: ${coal_count} Coal</p>`;
 });
@@ -387,25 +370,41 @@ if (banker_status === 'purchased' && gold_bar_count >= 1) {
     setInterval(Banker, 15000);
 }
 
-// achievments
-if (cash_count >= 1000000 && millionare_status === 'not_achieved') {
-    document.getElementById('random_output').innerHTML =
-    `<p>Achievement "Millionaire" Completed</p>`;
-    millionare_status = 'achieved';
-}
+// trader
+function Trader() {
+    document.getElementById('trader').innerHTML = `
+        <p>Hello I am the Magic Trader, choose one gift:</p>
+        <button id="choice_cash" type="button">5000 Dollars</button>
+        <button id="choice_pickaxe" type="button">Copper Pickaxe</button>
+        <button id="choice_miner" type="button">Hire Miner</button>
+    `;
 
-if (mine_count >= 1000 && mine_count_status1 === 'not_achieved') {
-    document.getElementById('random_output').innerHTML =
-    `<p>Achievement "Touch Grass" Completed</p>`;
-    mine_count_status1 = 'achieved';
-}
+    const choice_cash = document.getElementById('choice_cash');
+    const choice_pickaxe = document.getElementById('choice_pickaxe');
+    const choice_miner = document.getElementById('choice_miner');
 
-if (mine_count >= 5000 && mine_count_status2 === 'not_achieved') {
-    document.getElementById('random_output').innerHTML =
-    `<p>Achievement "Seriously Touch Grass" Completed</p>`;
-    mine_count_status2 = 'achieved';
-}
+    choice_cash.addEventListener('click', () => {
+        cash_count += 5000;
+    });
 
+    choice_pickaxe.addEventListener('click', () => {
+        multiplier += 3;
+        pick_durability = 3000;
+        copper_pick_status = 'purchased';
+    });
 
-// 5 seconds
+    choice_miner.addEventListener('click', () => {
+        miner_count += 1;
+    });
+
+    // 30 s
+    setTimeout(() => {
+        traderBox.innerHTML = "";
+    }, 30000);
+};
+
+// 1 h
+setInterval(Trader, 3600000);
+
+// 5 s
 setInterval(saveGame, 5000);
