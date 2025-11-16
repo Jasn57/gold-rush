@@ -30,10 +30,6 @@ Crafting system (make jewelry or refined products for higher profits)
 
 # Resources & Items
 
-enchant gold
-
-Add rare gems that boost multipliers or unlock special upgrades
-
 Fuel alternatives later in game (like oil or magic fuel)
 
 
@@ -44,10 +40,6 @@ Miner automation tiers (apprentice → foreman → industrial drill) ✅
 Smelter automation (auto-process ores using stored fuel) ✅
 
 selling automation (bank teller) ✅
-
-Power plant upgrade to reduce smelting costs 
-
-1 upgrade button for picks rather than multiple buttons 
 
 
 # Extras
