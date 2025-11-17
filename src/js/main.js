@@ -15,6 +15,8 @@ const coal_storage_upgrade = document.getElementById('coal_storage_upgrade');
 
 const craft_sword = document.getElementById('craft_sword');
 const sword_sell = document.getElementById('sword_sell');
+const craft_axe = document.getElementById('craft_axe');
+const axe_sel = document.getElementById('axe_sell')
 
 const wood_pick_upgrade = document.getElementById('wood_pick_upgrade');
 const stone_pick_upgrade = document.getElementById('stone_pick_upgrade');
@@ -33,6 +35,7 @@ let pick_durability = Infinity;
 let gold_bar_price = 80;
 
 let sword_count = 0;
+let axe_count = 0;
 
 let wood_pick_status = 'not_purchased';
 let stone_pick_status = 'not_purchased';
@@ -61,7 +64,8 @@ multiplier = parseInt(localStorage.getItem("multiplier")) || 0;
 pick_durability = parseInt(localStorage.getItem("pick_durability")) || Infinity;
 gold_bar_price = parseInt(localStorage.getItem("gold_bar_price")) || 80;
 
-sword_count = parseInt(localStorage.getITem("sword_count")) || 0;
+sword_count = parseInt(localStorage.getItem("sword_count")) || 0;
+axe_count = parseInt(localStorage.getItem("axe_count")) || 0;
 
 wood_pick_status = localStorage.getItem("wood_pick_status") || "not_purchased";
 stone_pick_status = localStorage.getItem("stone_pick_status") || "not_purchased";
@@ -92,6 +96,7 @@ function saveGame() {
   localStorage.setItem("gold_bar_price", gold_bar_price);
 
   localStorage.setItem("sword_count", sword_count);
+  localStorage.setItem("axe_count", axe_count);
 
   localStorage.setItem("wood_pick_status", wood_pick_status);
   localStorage.setItem("stone_pick_status", stone_pick_status);
@@ -146,6 +151,15 @@ craft_sword.addEventListener('click', () => {
     }
 });
 
+craft_axe.addEventListener('click', () => {
+    if(gold_bar_count === 3) {
+        gold_bar_count -= 3;
+        axe_count += 1;
+        document.getElementById('axe_count_output').innerHTML =
+        `<p>${axe_count} Axes</p>` 
+    }
+});
+
 // sell crafted
 sword_sell.addEventListener('click', () => {
     if (sword_count >= 1) {
@@ -154,6 +168,17 @@ sword_sell.addEventListener('click', () => {
         document.getElementById('sword_count_output').innerHTML =
         `<p>${sword_count} Swords</p>`;
         document.getElementById("cash_count_output").innerHTML = 
+        `<p>You have: ${cash_count} Dollars</p>`;
+    }
+});
+
+axe_sell.addEventListener('click', () => {
+    if (axe_count >= 1) {
+        axe_count -= 1;
+        cash_count += 300;
+        document.getElementById('axe_count_output').innerHTMl =
+        `<p>${axe_count} Axes</p>`;
+        document.getElementById('cash_count_output').innerHTMl =
         `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
