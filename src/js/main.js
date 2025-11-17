@@ -16,7 +16,9 @@ const coal_storage_upgrade = document.getElementById('coal_storage_upgrade');
 const craft_sword = document.getElementById('craft_sword');
 const sword_sell = document.getElementById('sword_sell');
 const craft_axe = document.getElementById('craft_axe');
-const axe_sel = document.getElementById('axe_sell')
+const axe_sell = document.getElementById('axe_sell')
+const craft_pickaxe = document.getElementById('craft_pickaxe');
+const pickaxe_sell = document.getElementById('pickaxe_sell');
 
 const wood_pick_upgrade = document.getElementById('wood_pick_upgrade');
 const stone_pick_upgrade = document.getElementById('stone_pick_upgrade');
@@ -36,6 +38,7 @@ let gold_bar_price = 80;
 
 let sword_count = 0;
 let axe_count = 0;
+let pickaxe_count = 0; 
 
 let wood_pick_status = 'not_purchased';
 let stone_pick_status = 'not_purchased';
@@ -66,6 +69,7 @@ gold_bar_price = parseInt(localStorage.getItem("gold_bar_price")) || 80;
 
 sword_count = parseInt(localStorage.getItem("sword_count")) || 0;
 axe_count = parseInt(localStorage.getItem("axe_count")) || 0;
+pickaxe_count = parseInt(localStorage.getItem("pickaxe_count")) || 0;
 
 wood_pick_status = localStorage.getItem("wood_pick_status") || "not_purchased";
 stone_pick_status = localStorage.getItem("stone_pick_status") || "not_purchased";
@@ -97,6 +101,7 @@ function saveGame() {
 
   localStorage.setItem("sword_count", sword_count);
   localStorage.setItem("axe_count", axe_count);
+  localStorage.setItem("pickaxe_count", pickaxe_count);
 
   localStorage.setItem("wood_pick_status", wood_pick_status);
   localStorage.setItem("stone_pick_status", stone_pick_status);
@@ -143,7 +148,7 @@ setInterval(Price, 20000); // 20 s
 
 // crafting
 craft_sword.addEventListener('click', () => {
-    if (gold_bar_count === 2) {
+    if (gold_bar_count >= 2) {
         gold_bar_count -= 2;
         sword_count += 1;
         document.getElementById('sword_count_output').innerHTML =
@@ -152,11 +157,20 @@ craft_sword.addEventListener('click', () => {
 });
 
 craft_axe.addEventListener('click', () => {
-    if(gold_bar_count === 3) {
+    if(gold_bar_count >= 3) {
         gold_bar_count -= 3;
         axe_count += 1;
         document.getElementById('axe_count_output').innerHTML =
         `<p>${axe_count} Axes</p>` 
+    }
+});
+
+craft_pickaxe.addEventListener('click', () => {
+    if(gold_bar_count >= 4) {
+        gold_bar_count -= 4;
+        pickaxe_count += 1;
+        document.getElementById('pickaxe_count_output').innerHTML =
+        `<p>${pickaxe_count} Pickaxes</p>`;
     }
 });
 
@@ -178,6 +192,17 @@ axe_sell.addEventListener('click', () => {
         cash_count += 300;
         document.getElementById('axe_count_output').innerHTMl =
         `<p>${axe_count} Axes</p>`;
+        document.getElementById('cash_count_output').innerHTMl =
+        `<p>You have: ${cash_count} Dollars</p>`;
+    }
+});
+
+pickaxe_sell.addEventListener('click', () => {
+    if(pickaxe_count >= 1) {
+        axe_count -= 1
+        cash_count += 400
+        document.getElementById('pickaxe_count_output').innerHTMl =
+        `${pickaxe_count} Pickaxes`;
         document.getElementById('cash_count_output').innerHTMl =
         `<p>You have: ${cash_count} Dollars</p>`;
     }
