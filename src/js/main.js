@@ -13,7 +13,8 @@ const gold_bar_storage_upgrade = document.getElementById('gold_bar_storage_upgra
 const cash_storage_upgrade = document.getElementById('cash_storage_upgrade');
 const coal_storage_upgrade = document.getElementById('coal_storage_upgrade');
 
-const prestige_up = document.getElementById('prestige_up');
+const craft_sword = document.getElementById('craft_sword');
+const sword_sell = document.getElementById('sword_sell');
 
 const wood_pick_upgrade = document.getElementById('wood_pick_upgrade');
 const stone_pick_upgrade = document.getElementById('stone_pick_upgrade');
@@ -30,6 +31,8 @@ let gold_bar_count = 0;
 let multiplier = 0;
 let pick_durability = Infinity;
 let gold_bar_price = 80;
+
+let sword_count = 0;
 
 let wood_pick_status = 'not_purchased';
 let stone_pick_status = 'not_purchased';
@@ -56,7 +59,9 @@ cash_count = parseInt(localStorage.getItem("cash_count")) || 0;
 gold_bar_count = parseInt(localStorage.getItem("gold_bar_count")) || 0;
 multiplier = parseInt(localStorage.getItem("multiplier")) || 0;
 pick_durability = parseInt(localStorage.getItem("pick_durability")) || Infinity;
-gold_bar_price = parseInt(localStorage.getItem("gold_bar_price")) || 10;
+gold_bar_price = parseInt(localStorage.getItem("gold_bar_price")) || 80;
+
+sword_count = parseInt(localStorage.getITem("sword_count")) || 0;
 
 wood_pick_status = localStorage.getItem("wood_pick_status") || "not_purchased";
 stone_pick_status = localStorage.getItem("stone_pick_status") || "not_purchased";
@@ -85,6 +90,8 @@ function saveGame() {
   localStorage.setItem("multiplier", multiplier);
   localStorage.setItem("pick_durability", pick_durability);
   localStorage.setItem("gold_bar_price", gold_bar_price);
+
+  localStorage.setItem("sword_count", sword_count);
 
   localStorage.setItem("wood_pick_status", wood_pick_status);
   localStorage.setItem("stone_pick_status", stone_pick_status);
@@ -127,7 +134,29 @@ function Price() {
         `<p>Gold bar price: ${gold_bar_price}</p>`;
 }
 
-setInterval(Price, 20000); // 20 seconds
+setInterval(Price, 20000); // 20 s
+
+// crafting
+craft_sword.addEventListener('click', () => {
+    if (gold_bar_count === 2) {
+        gold_bar_count -= 2;
+        sword_count += 1;
+        document.getElementById('sword_count_output').innerHTML =
+        `<p>${sword_count} Swords</p>`;
+    }
+});
+
+// sell crafted
+sword_sell.addEventListener('click', () => {
+    if (sword_count >= 1) {
+        sword_count -= 1;
+        cash_count += 200
+        document.getElementById('sword_count_output').innerHTML =
+        `<p>${sword_count} Swords</p>`;
+        document.getElementById("cash_count_output").innerHTML = 
+        `<p>You have: ${cash_count} Dollars</p>`;
+    }
+});
 
 // sell gold bar
 sell_button.addEventListener('click', () => {

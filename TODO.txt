@@ -25,7 +25,9 @@ Storage limits ✅
 
 expansions for storage ✅
 
-Crafting system (make jewelry or refined products for higher profits)
+Crafting system (make jewelry or refined products for higher profits) ⬛
+
+fluctuating prices for prodcuts
 
 
 # Resources & Items
@@ -40,6 +42,8 @@ Miner automation tiers (apprentice → foreman → industrial drill) ✅
 Smelter automation (auto-process ores using stored fuel) ✅
 
 selling automation (bank teller) ✅
+
+worker to craft
 
 
 # Extras
