@@ -1,7 +1,5 @@
 ⬛ ✅
 
-# Core Gameplay
-
 Mine coal and ores ✅
 
 Smelt ores using coal as fuel ✅
@@ -14,9 +12,6 @@ Durability for picks ✅
 
 Hire miners to automate mining ✅
 
-
-# Economy & Progression
-
 Market with fluctuating gold bar prices ✅
 
 Random trader who offers better deals occasionally ✅
@@ -25,17 +20,9 @@ Storage limits ✅
 
 expansions for storage ✅
 
-Crafting system (make jewelry or refined products for higher profits) ⬛
+Crafting system (make jewelry or refined products for higher profits) ✅
 
-fluctuating prices for prodcuts
-
-
-# Resources & Items
-
-Fuel alternatives later in game (like oil or magic fuel)
-
-
-# Upgrades & Automation
+fluctuating prices for prodcuts ⚫
 
 Miner automation tiers (apprentice → foreman → industrial drill) ✅
 
@@ -45,14 +32,9 @@ selling automation (bank teller) ✅
 
 worker to craft
 
+worker to sell crafted 
 
-# Extras
-
-Random events (e.g., “Gold Rush” for double income for 30 seconds)
-
-Mining levels or XP system
-
-# UI & Quality of Life
+Random events (e.g., “Gold Rush” for double income for 30 seconds) ⚫
 
 an acutal ui lol
 
@@ -61,3 +43,9 @@ Local storage ✅
 Tooltip info for upgrades and prices
 
 Sound effects and background music
+
+## ideas
+
+add account options
+
+cash count leaderboard
