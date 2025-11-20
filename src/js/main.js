@@ -40,23 +40,23 @@ let bracelet_count = 0;
 let ring_count = 0;
 let necklace_count = 0;
 
-let wood_pick_status = 'not_purchased';
-let stone_pick_status = 'not_purchased';
-let copper_pick_status = 'not_purchased';
-let iron_pick_status = 'not_purchased';
-let gold_pick_status = 'not_purchased';
-let emerald_pick_status = 'not_purchased';
-let diamond_pick_status = 'not_purchased';
+let wood_pick_status = false;
+let stone_pick_status = false;
+let copper_pick_status = false;
+let iron_pick_status = false;
+let gold_pick_status = false;
+let emerald_pick_status = false;
+let diamond_pick_status = false;
 
-let cash_storage_upgrade_status = 'not_purchased';
-let coal_storage_upgrade_status = 'not_purchased';
-let gold_ore_storage_upgrade_status = 'not_purchased';
-let gold_bar_storage_upgrade_status = 'not_purchased';
+let cash_storage_upgrade_status = false;
+let coal_storage_upgrade_status = false;
+let gold_ore_storage_upgrade_status = false;
+let gold_bar_storage_upgrade_status = false;
 
 let miner_count = 0;
 let drill_count = 0;
-let blacksmith_status = 'not_purchased';
-let banker_status = 'not_purchased';
+let blacksmith_count = 0;
+let banker_count = 0;
 
 // load from local storage
 gold_ore_count = parseInt(localStorage.getItem("gold_ore_count")) || 0;
@@ -71,23 +71,23 @@ ring_count = parseInt(localStorage.getItem("ring_count")) || 0;
 bracelet_count = parseInt(localStorage.getItem("bracelet_count")) || 0;
 necklace_count = parseInt(localStorage.getItem("necklace_count")) || 0;
 
-wood_pick_status = localStorage.getItem("wood_pick_status") || "not_purchased";
-stone_pick_status = localStorage.getItem("stone_pick_status") || "not_purchased";
-copper_pick_status = localStorage.getItem("copper_pick_status") || "not_purchased";
-iron_pick_status = localStorage.getItem("iron_pick_status") || "not_purchased";
-gold_pick_status = localStorage.getItem("gold_pick_status") || "not_purchased";
-emerald_pick_status = localStorage.getItem("emerald_pick_status") || "not_purchased";
-diamond_pick_status = localStorage.getItem("diamond_pick_status") || "not_purchased";
+wood_pick_status = localStorage.getItem("wood_pick_status") || false;
+stone_pick_status = localStorage.getItem("stone_pick_status") || false;
+copper_pick_status = localStorage.getItem("copper_pick_status") || false;
+iron_pick_status = localStorage.getItem("iron_pick_status") || false;
+gold_pick_status = localStorage.getItem("gold_pick_status") || false;
+emerald_pick_status = localStorage.getItem("emerald_pick_status") || false;
+diamond_pick_status = localStorage.getItem("diamond_pick_status") || false;
 
-cash_storage_upgrade_status = localStorage.setItem("cash_storage_upgrade_status") || "not_pruchased";
-coal_storage_upgrade_status = localStorage.setItem("coal_storage_upgrade_status") || "not_pruchased";
-gold_ore_storage_upgrade_status = localStorage.setItem("gold_ore_storage_upgrade_status") || "not_pruchased";
-gold_bar_storage_upgrade_status = localStorage.setItem("gold_bar_storage_upgrade_status") || "not_pruchased";
+cash_storage_upgrade_status = localStorage.setItem("cash_storage_upgrade_status") || false;
+coal_storage_upgrade_status = localStorage.setItem("coal_storage_upgrade_status") || false;
+gold_ore_storage_upgrade_status = localStorage.setItem("gold_ore_storage_upgrade_status") || false;
+gold_bar_storage_upgrade_status = localStorage.setItem("gold_bar_storage_upgrade_status") || false;
 
 miner_count = localStorage.getItem("miner_count") || 0;
 drill_count = localStorage.getItem("drill_count") || 0;
-blacksmith_status = localStorage.getItem("blacksmith_status") || "not_purchased";
-banker_status = localStorage.getItem("banker_status") || "not_purchased";
+blacksmith_coumnt = localStorage.getItem("blacksmith_count") || 0;
+banker_count = localStorage.getItem("banker_count") || 0;
 
 // save progress to local storage
 function saveGame() {
@@ -119,6 +119,7 @@ function saveGame() {
   localStorage.setItem("miner_count", miner_count);
   localStorage.setItem("drill_count", drill_count);
   localStorage.setItem("blacksmith_count", blacksmith_count);
+  localStorage.setItem("banker_count", banker_count);
 }
 
 // mine gold
@@ -245,40 +246,51 @@ smelt_button.addEventListener('click', () => {
 
 // storage upgrades
 coal_storage_upgrade.addEventListener('click', async () => {
-    coal_storage_upgrade_status = 'purchased';
+    if (cash_count >= 10000) {
+    cash_count -= 10000;
+    coal_storage_upgrade_status = true;
+    }
 });
 
 cash_storage_upgrade.addEventListener('click', async () => {
-    cash_storage_upgrade_status = 'purchased';
+    if (cash_count >= 10000) {
+    cash_count -= 10000;
+    cash_storage_upgrade_status = false;
+    }
 });
 
 gold_ore_storage_upgrade.addEventListener('click', async () => {
-    gold_ore_storage_upgrade_status = 'purchased';
+    if (cash_count >= 10000) {
+    cash_count -= 10000;
+    gold_ore_storage_upgrade_status = true;
+    }
 });
 
 gold_bar_storage_upgrade.addEventListener('click', async () => {
+    if (cash_count >= 10000) {
+    cash_count -= 10000;
     gold_bar_storage_upgrade_status = 'purchased';
 });
 
-if (gold_ore_count > 10000 && gold_ore_storage_upgrade_status === 'not_purchased') {
+if (gold_ore_count > 10000 && gold_ore_storage_upgrade_status === true) {
   gold_ore_count = 10000;
   document.getElementById('random_output').innerHTML =
   `<p>You ran out of storage space for gold ore</p>`;
 }
 
-if (gold_bar_count > 10000 && gold_bar_storage_upgrade_status === 'not_purchased') {
+if (gold_bar_count > 10000 && gold_bar_storage_upgrade_status === true) {
   gold_bar_count = 10000;
   document.getElementById('random_output').innerHTML =
   `<p>You ran out of storage space for gold bars</p>`;
 }
 
-if (coal_count > 10000 && coal_storage_upgrade_status === 'not_purchased') {
+if (coal_count > 10000 && coal_storage_upgrade_status === true) {
   coal_count = 10000;
   document.getElementById('random_output').innerHTML =
   `<p>You ran out of storage space for coal</p>`;
 }
 
-if (cash_count > 10000000 && cash_storage_upgrade_status === 'not_purchased') {
+if (cash_count > 10000000 && cash_storage_upgrade_status === true ) {
   cash_count = 10000000;
   document.getElementById('random_output').innerHTML =
   `<p>You ran out of storage space for cash</p>`;
@@ -286,77 +298,77 @@ if (cash_count > 10000000 && cash_storage_upgrade_status === 'not_purchased') {
 
 // upgrades
 wood_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 250 && wood_pick_status === 'not_purchased') {
+    if (cash_count >= 250 && wood_pick_status === false) {
         cash_count -= 250;
         multiplier += 1;
         pick_durability = 1000;
-        wood_pick_status = 'purchased';
+        wood_pick_status = true;
         document.getElementById("cash_count_output").innerHTML = 
         `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 stone_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 1000 && stone_pick_status === 'not_purchased') {
+    if (cash_count >= 1000 && stone_pick_status === false) {
         cash_count -= 1000;
         multiplier += 2;
         pick_durability = 2500;
-        stone_pick_status = 'purchased';
+        stone_pick_status = true;
         document.getElementById("cash_count_output").innerHTML = 
         `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 copper_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 5000 && copper_pick_status === 'not_purchased') {
+    if (cash_count >= 5000 && copper_pick_status === false) {
         cash_count -= 5000;
         multiplier += 3;
         pick_durability = 3000;
-        copper_pick_status = 'purchased';
+        copper_pick_status = true;
         document.getElementById("cash_count_output").innerHTML = 
         `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 iron_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 15000 && iron_pick_status === 'not_purchased') {
+    if (cash_count >= 15000 && iron_pick_status === false) {
         cash_count -= 15000;
         multiplier += 4;
         pick_durability = 4000;
-        iron_pick_status = 'purchased';
+        iron_pick_status = true;
         document.getElementById("cash_count_output").innerHTML = 
         `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 gold_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 40000 && gold_pick_status === 'not_purchased') {
+    if (cash_count >= 40000 && gold_pick_status === false) {
         cash_count -= 40000;
         multiplier += 6;
         pick_durability = 5000;
-        gold_pick_status = 'purchased';
+        gold_pick_status = true;
         document.getElementById("cash_count_output").innerHTML = 
         `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 emerald_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 100000 && emerald_pick_status === 'not_purchased') {
+    if (cash_count >= 100000 && emerald_pick_status === false) {
         cash_count -= 100000;
         multiplier += 8;
         pick_durability = 5500;
-        emerald_pick_status = 'purchased';
+        emerald_pick_status = true;
         document.getElementById("cash_count_output").innerHTML = 
         `<p>You have: ${cash_count} Dollars</p>`;
     }
 });
 
 diamond_pick_upgrade.addEventListener('click', () => {
-    if (cash_count >= 250000 && diamond_pick_status === 'not_purchased') {
+    if (cash_count >= 250000 && diamond_pick_status === false) {
         cash_count -= 12000;
         multiplier += 10;
         pick_durability = 7000;
-        diamond_pick_status = 'purchased';
+        diamond_pick_status = true;
         document.getElementById("cash_count_output").innerHTML = 
         `<p>You have: ${cash_count} Dollars</p>`;
     }
@@ -366,13 +378,13 @@ diamond_pick_upgrade.addEventListener('click', () => {
 if (pick_durability <= 0) {
     document.getElementById('random_output').innerHTML = 
     `<p> Your pickaxe broke, buy a new one.</p>`;
-    wood_pick_status = 'not_purchased';
-    stone_pick_status = 'not_purchased';
-    copper_pick_status = 'not_purchased';
-    iron_pick_status = 'not_purchased';
-    gold_pick_status = 'not_purchased';
-    emerald_pick_status = 'not_purchased';
-    diamond_pick_status = 'not_purchased';
+    wood_pick_status = false;
+    stone_pick_status = false;
+    copper_pick_status = false;
+    iron_pick_status = false;
+    gold_pick_status = false;
+    emerald_pick_status = false;
+    diamond_pick_status = false;
 }
 
 // hire workers
@@ -385,11 +397,11 @@ drill_hire.addEventListener('click', async () => {
 });
 
 blacksmith_hire.addEventListener('click', async () => {
-    blacksmith_status = 'purchased';
+    blacksmith_count += 1;
 });
 
 banker_hire.addEventListener('click', async () => {
-    banker_status = 'purchased';
+    banker_count += 1;
 });
 
 // worker fucntions
@@ -412,9 +424,9 @@ function Drill() {
 };
 
 function Blacksmith() {
-    gold_ore_count -= 1;
-    coal_count -= 1;
-    gold_bar_count += 1;
+    gold_ore_count -= 1 * blacksmith_count;
+    coal_count -= 1 * blacksmith_count;
+    gold_bar_count += 1 * blacksmith_count;
     document.getElementById('gold_ore_count_output').innerHTML = 
     `You have: ${gold_ore_count} Gold Ore`;
     document.getElementById('coal_count_output').innerHTML = 
@@ -424,8 +436,8 @@ function Blacksmith() {
 };
 
 function Banker() {
-    gold_bar_count -= 1;
-    cash_count += 10;
+    gold_bar_count -= 1 * banker_count;
+    cash_count += 10 * banker_count;
     document.getElementById('gold_bar_count_output').innerHTML = 
     `You have: ${gold_bar_count} Gold Bars`;
     document.getElementById('cash_count_output').innerHTMl = 
@@ -441,11 +453,11 @@ if (drill_count >= 1) {
     setInterval(Drill, 30000);
 }
 
-if (blacksmith_status === 'purchased' && gold_ore_count >= 1 && coal_count >= 1) {
+if (blacksmith_count >= 1' && gold_ore_count >= 1 && coal_count >= 1) {
     setInterval(Blacksmith, 15000);
 }
 
-if (banker_status === 'purchased' && gold_bar_count >= 1) {
+if (banker_count >= 1 && gold_bar_count >= 1) {
     setInterval(Banker, 15000);
 }
 
