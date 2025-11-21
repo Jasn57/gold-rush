@@ -34,7 +34,7 @@ worker to craft
 
 worker to sell crafted 
 
-Random events (e.g., “Gold Rush” for double income for 30 seconds) ⚫
+Random events (e.g., “Gold Rush” for double income for 30 seconds) ✅
 
 an acutal ui lol
 
@@ -44,8 +44,4 @@ Tooltip info for upgrades and prices
 
 Sound effects and background music
 
-## ideas
-
-add account options
-
-cash count leaderboard
+timer for goldrush, and trader

@@ -506,5 +506,19 @@ function Trader() {
   }, 30000);
 }
 
-setInterval(Trader, 3600000);
+let originalMultiplier = multiplier;
+
+function Goldrush() {
+  originalMultiplier = multiplier;
+  multiplier = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
+  document.getElementById('random_output').innerHTML =
+    `<p>ITS GOLD RUSH! Mining multiplier is ${multiplier}</p>`;
+  setTimeout(() => {
+    multiplier = originalMultiplier;
+    document.getElementById('random_output').innerHTML = "";
+  }, 60000);
+}
+
+setInterval(Goldrush, 3600000);
+setInterval(Trader, 1800000);
 setInterval(saveGame, 5000);
