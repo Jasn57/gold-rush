@@ -22,7 +22,7 @@ expansions for storage ✅
 
 Crafting system (make jewelry or refined products for higher profits) ✅
 
-fluctuating prices for prodcuts ⚫
+fluctuating prices for prodcuts ✅
 
 Miner automation tiers (apprentice → foreman → industrial drill) ✅
 

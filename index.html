@@ -6,34 +6,63 @@
   <title>Gold Rush</title>
   <link rel="stylesheet" href="src/css/style.css" />
 </head>
+
 <body>
-<header id="nav">
-  <nav>
-    <ul>
-      <li><div id="cash_count_output">You have: 0 Dollars</div></li>
-      <li><div id="gold_bar_count_output">You have: 0 Gold Bars</div></li>
-      <li><div id="gold_ore_count_output">You have: 0 Gold Ore</div></li>
-      <li><div id="coal_count_output">You have: 0 Coal</div></li>
-    </ul>
-  </nav>
-</header>
-  
+  <header id="nav">
+    <nav>
+      <ul>
+        <li><div id="cash_count_output">You have: 0 Dollars</div></li>
+        <li><div id="gold_bar_count_output">You have: 0 Gold Bars</div></li>
+        <li><div id="gold_ore_count_output">You have: 0 Gold Ore</div></li>
+        <li><div id="coal_count_output">You have: 0 Coal</div></li>
+      </ul>
+    </nav>
+  </header>
+
   <h1>Gold Rush</h1>
 
+  <section id="mine">
+    <h2>Mining</h2>
+    <input id="gold_mine_button" type="image" src="assets/gold_ore.png" alt="Mine Gold" width="150" height="150">
+    <input id="coal_mine_button" type="image" src="assets/coal_ore.png" alt="Mine Coal" width="150" height="150">
+  </section>
+
   <section id="furnace">
-    <button id="smelt_button" type="button">Smelt</button>
+    <h2>Smelting</h2>
+    <button id="smelt_button" type="button">Smelt Gold Ore</button>
+    <div id="gold_bar_price_output"></div>
   </section>
 
   <section id="sell">
+    <h2>Selling</h2>
     <button id="sell_button" type="button">Sell Gold Bars</button>
   </section>
 
-  <section id="mine">
-    <input id="gold_mine_button" type="image" src="assets/gold_ore.png" alt="Mine Gold" width="150" height="150">
-    <input id="coal_mine_button" type="image" src="assets/coal_ore.png" alt="Mine Coal" width="150" height="150">
-  </section>  
+  <section id="crafting">
+    <h2>Crafting</h2>
+    <div class="craft-group">
+      <button id="craft_ring" type="button">Craft Ring</button>
+      <div id="ring_count_output"></div>
+    </div>
+    <div class="craft-group">
+      <button id="craft_bracelet" type="button">Craft Bracelet</button>
+      <div id="bracelet_count_output"></div>
+    </div>
+    <div class="craft-group">
+      <button id="craft_necklace" type="button">Craft Necklace</button>
+      <div id="necklace_count_output"></div>
+    </div>
+  </section>
+
+  <section id="craft_sell">
+    <h2>Sell Crafted Items</h2>
+    <button id="ring_sell" type="button">Sell Ring</button>
+    <button id="bracelet_sell" type="button">Sell Bracelet</button>
+    <button id="necklace_sell" type="button">Sell Necklace</button>
+  </section>
 
   <section id="pick_shop">
+    <h2>Pickaxe Shop</h2>
     <button id="wood_pick_upgrade" type="button">Buy Wood Pickaxe</button>
     <button id="stone_pick_upgrade" type="button">Buy Stone Pickaxe</button>
     <button id="copper_pick_upgrade" type="button">Buy Copper Pickaxe</button>
@@ -42,41 +71,33 @@
     <button id="emerald_pick_upgrade" type="button">Buy Emerald Pickaxe</button>
     <button id="diamond_pick_upgrade" type="button">Buy Diamond Pickaxe</button>
   </section>
+
   <section id="worker_shop">
+    <h2>Worker Shop</h2>
     <button id="miner_hire" type="button">Hire Miner</button>
     <button id="drill_hire" type="button">Buy Drill</button>
     <button id="blacksmith_hire" type="button">Hire Blacksmith</button>
     <button id="banker_hire" type="button">Hire Banker</button>
   </section>
+
   <section id="upgrade_shop">
+    <h2>Storage Upgrades</h2>
     <button id="gold_ore_storage_upgrade" type="button">Upgrade Gold Ore Storage</button>
-    <button id="gold_bars_storage_upgrade" type="button">Upgrade Gold Bar Storage</button>
-    <button id="gold_cash_storage_upgrade" type="button">Upgrade Cash Storage</button>
-    <button id="gold_coal_storage_upgrade" type="button">Upgrade Coal Storage</button>
+    <button id="gold_bar_storage_upgrade" type="button">Upgrade Gold Bar Storage</button>
+    <button id="cash_storage_upgrade" type="button">Upgrade Cash Storage</button>
+    <button id="coal_storage_upgrade" type="button">Upgrade Coal Storage</button>
   </section>
+
   <section id="prestige">
+    <h2>Prestige</h2>
     <button id="prestige_up" type="button">Prestige</button>
   </section>
-  <section id="crafting">
-    <button id="craft_ring" type="button">Ring</button>
-    <button id="craft_bracelet" type="button">Bracelet</button>
-    <button id="craft_necklace" type="button">Necklace</button>
-  </section>
-  <section id="craft_sell">
-    <button id="ring_sell" type="button">Sell Ring</button>
-    <button id="bracelet_sell" type="button">Sell Bracelt <button>
-    <button id="necklace_sell" type="button">Sell Necklace</button>
-  </section>
+
+  <section id="trader"></section>
 
   <div id="random_output"></div>
-  <div id="gold_bar_price_output"></div>
-  <div id="trader">
-    
-  <div id="ring_count_output"></div>
-  <div id="bracelet_count_output"></div>
-  <div id="necklace_count_output"></div>
 
-
-  <script src="src/js/main.js"></script>  
+  <script src="src/js/main.js"></script>
 </body>
+
 </html>
