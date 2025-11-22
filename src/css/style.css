@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+header#nav {
+  background: linear-gradient(90deg, #d4af37 0%, #f4e4c1 50%, #d4af37 100%);
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+}
+
+header#nav nav ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+header#nav div {
+  font-weight: bold;
+  color: #1a1a2e;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 3.5em;
+  margin-bottom: 40px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(90deg, #d4af37, #f4e4c1, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+section:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+}
+
+section h2 {
+  color: #d4af37;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 10px;
+}
+
+button, input[type="image"] {
+  background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+  color: #1a1a2e;
+  border: none;
+  padding: 12px 20px;
+  margin: 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button:hover, input[type="image"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  background: linear-gradient(135deg, #f4e4c1 0%, #d4af37 100%);
+}
+
+button:active, input[type="image"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+input[type="image"] {
+  padding: 0;
+  width: 150px;
+  height: 150px;
+  margin: 15px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(244, 228, 193, 0.2));
+  border: 3px solid rgba(212, 175, 55, 0.4);
+}
+
+#mine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mine > * {
+  margin: 10px;
+}
+
+.craft-group {
+  display: inline-block;
+  margin: 10px;
+  padding: 15px;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+#crafting, #worker_shop, #pick_shop, #craft_sell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+#crafting h2, #worker_shop h2, #pick_shop h2, #craft_sell h2 {
+  width: 100%;
+}
+
+#furnace, #sell, #upgrade_shop {
+  text-align: center;
+}
+
+#gold_bar_price_output, #ring_count_output, #bracelet_count_output, #necklace_count_output, #random_output {
+  color: #d4af37;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 1.1em;
+}
+
+#trader {
+  min-height: 100px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  header#nav nav ul {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+}
