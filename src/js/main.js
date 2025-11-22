@@ -252,6 +252,8 @@ function Crafterring() {
   if (gold_bar_count >= 1) {
     gold_bar_count -= 1 * crafter_count;
     ring_count += 1 * crafter_count;
+    document.getElementById('ring_count_output').innerHTML =
+    `<p>${ring_count} Rings</p>`;
   }
 };
 
@@ -259,6 +261,8 @@ function Crafterbracelet() {
   if (gold_bar_count >= 2) {
     gold_bar_count -= 2 * crafter_count;
     bracelet_count += 1 * crafter_count;
+    document.getElementById('bracelet_count_output').innerHTML =
+    `<p>${bracelet_count} Bracelets</p>`;
   }
 };
 
@@ -266,6 +270,8 @@ function Crafternecklace() {
   if (gold_bar_count >= 3) {
     gold_bar_count -= 3 * crafter_count;
     necklace_count += 1 * crafter_count;
+    document.getElementById('necklace_count_output').innerHTML =
+    `<p>${necklace_count} Necklaces</p>`;
   }
 };
 
@@ -273,14 +279,26 @@ function Craftseller() {
   if (ring_count >= 1) {
     ring_count -=1 * craft_seller_count;
     cash_count += ring_price * craft_seller_count;
+    document.getElementById('cash_count_output').innerHTML =
+    `<p>You have: ${cash_count} Dollars</p>`;
+    document.getElementById('ring_count_output').innerHTML =
+    `<p>${ring_count} Ring</p>`;
   }
   if (bracelet_count >= 1) {
     bracelet_count >= 1 * craft_seller_count;
-    cash_count += bracelet_price * craft_seller_count; 
+    cash_count += bracelet_price * craft_seller_count;
+    document.getElementById('cash_count_output').innerHTML =
+    `<p>You have: ${cash_count} Dollars</p>`;
+    document.getElementById('bracelet_count_output').innerHTML =
+    `<p>${bracelets_count} Bracelets</p>`; 
   }
   if (necklace_count >= 1) {
     necklace_count += 1 * craft_seller_count;
     cash_count += necklace_price * craft_seller_count;
+    document.getElementById('cash_count_output').innerHTML =
+    `<p>You have: ${cash_count} Dollars</p>`;
+    document.getElementById('necklace_count_output').innerHTML =
+    `<p>${necklace_count} Necklaces</p>`;
   }
 };
 
@@ -584,3 +602,4 @@ function Goldrush() {
 setInterval(Goldrush, 3600000);
 setInterval(Trader, 1800000);
 setInterval(saveGame, 5000);
+
