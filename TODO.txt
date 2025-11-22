@@ -30,7 +30,7 @@ Smelter automation (auto-process ores using stored fuel) ✅
 
 selling automation (bank teller) ✅
 
-worker to craft ⬛
+worker to craft ✅
 
 worker to sell crafted ✅
 

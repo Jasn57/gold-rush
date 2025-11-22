@@ -8,6 +8,7 @@ const drill_hire = document.getElementById('drill_hire');
 const blacksmith_hire = document.getElementById('blacksmith_hire');
 const banker_hire = document.getElementById('banker_hire');
 const craft_sell_hire = document.getElementById('craft_sell_hire');
+const crafter_hire = document.getElementById('crafter_hire');
 
 const gold_ore_storage_upgrade = document.getElementById('gold_ore_storage_upgrade');
 const gold_bar_storage_upgrade = document.getElementById('gold_bar_storage_upgrade');
@@ -97,6 +98,7 @@ drill_count = parseInt(localStorage.getItem("drill_count")) || 0;
 blacksmith_count = parseInt(localStorage.getItem("blacksmith_count")) || 0;
 banker_count = parseInt(localStorage.getItem("banker_count")) || 0;
 craft_seller_count = parseInt(localStorage.getIten("craft_seller_count")) || 0;
+crafter_count = parseInt(localStorage.getItem("crafter_count")) || 0;
 
 function saveGame() {
   localStorage.setItem("gold_ore_count", gold_ore_count);
@@ -132,6 +134,7 @@ function saveGame() {
   localStorage.setItem("blacksmith_count", blacksmith_count);
   localStorage.setItem("banker_count", banker_count);
   localStorage.setItem("craft_seller_count", craft_seller_count);
+  localStorage.setItem("crafter_count", crafter_count);
 }
 
 gold_mine_button.addEventListener('click', () => {
@@ -241,6 +244,31 @@ craft_sell_hire.addEventListener('click', () => {
   craft_seller_count += 1;
 })
 
+crafter_hire.addEventListener('click', () => {
+  crafter_count += 1 
+});
+
+function Crafterring() {
+  if (gold_bar_count >= 1) {
+    gold_bar_count -= 1 * crafter_count;
+    ring_count += 1 * crafter_count;
+  }
+};
+
+function Crafterbracelet() {
+  if (gold_bar_count >= 2) {
+    gold_bar_count -= 2 * crafter_count;
+    bracelet_count += 1 * crafter_count;
+  }
+};
+
+function Crafternecklace() {
+  if (gold_bar_count >= 3) {
+    gold_bar_count -= 3 * crafter_count;
+    necklace_count += 1 * crafter_count;
+  }
+};
+
 function Craftseller() {
   if (ring_count >= 1) {
     ring_count -=1 * craft_seller_count;
@@ -258,6 +286,12 @@ function Craftseller() {
 
 if (craft_seller_count >= 1) {
 setInterval(Craftseller, 20000);
+}
+
+if (crafter_count >= 1) {
+setInterval(Crafterring, 10000);
+setInterval(Crafterbracelet, 20000);
+setInterval(Crafternecklace, 30000);
 }
 
 sell_button.addEventListener('click', () => {
