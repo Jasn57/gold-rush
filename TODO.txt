@@ -3,5 +3,3 @@ Tooltip info for upgrades and prices
 Sound effects and background music
 
 timer for goldrush, and trader
-
-an acutal ui
